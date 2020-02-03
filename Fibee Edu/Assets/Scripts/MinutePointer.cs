@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class MinutePointer : MonoBehaviour
 {
+    [SerializeField] GameObject hourPointer;
+    ClockTowerManager ClockTower;
     Vector3 VScreen = new Vector3();
     Vector3 VWorld = new Vector3();
 
 
     private void Start()
     {
-
+        ClockTower = FindObjectOfType<ClockTowerManager>();
     }
     private void Update()
     {
@@ -25,11 +27,17 @@ public class MinutePointer : MonoBehaviour
         VScreen.z = Camera.main.transform.position.z;
         VWorld = Camera.main.ScreenToWorldPoint(VScreen);
         Vector3 dir = VWorld - transform.position;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg +90f ;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg + 90f ;
         transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
         float minuteAngle = 360f - transform.localEulerAngles.z;
-        int minute = (int)(minuteAngle / 6);
-        print(minute);
+        int minute = minuteAngle < 357f ? Mathf.RoundToInt(minuteAngle / 6) : 59;
+        ClockTower.GetMinutes(minute);
+        print(transform.position.x);
+        print(transform.localPosition.x);
+        print(dir);
     }
-
+    public void ResetTime()
+    {
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
+    }
 }
