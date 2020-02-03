@@ -1,0 +1,35 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MinutePointer : MonoBehaviour
+{
+    Vector3 VScreen = new Vector3();
+    Vector3 VWorld = new Vector3();
+
+
+    private void Start()
+    {
+
+    }
+    private void Update()
+    {
+
+    }
+
+    private void OnMouseDrag()
+    {
+        
+        VScreen.x = Input.mousePosition.x;
+        VScreen.y = Input.mousePosition.y;
+        VScreen.z = Camera.main.transform.position.z;
+        VWorld = Camera.main.ScreenToWorldPoint(VScreen);
+        Vector3 dir = VWorld - transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg +90f ;
+        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        float minuteAngle = 360f - transform.localEulerAngles.z;
+        int minute = (int)(minuteAngle / 6);
+        print(minute);
+    }
+
+}
