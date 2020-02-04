@@ -10,4 +10,9 @@ public class MenuManager : MonoBehaviour
 	{
 		btnStartGame.onClick.AddListener(delegate { SceneChanger.instance.LoadScene((int)Scenes.Game); });
 	}
+
+    public void QuitTheGame()
+    {
+        Application.Quit();
+    }
 }

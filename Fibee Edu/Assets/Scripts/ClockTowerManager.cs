@@ -61,6 +61,7 @@ public class ClockTowerManager : MonoBehaviour
         if((generatedHour == hours || generatedHour == hours + 12 ) && generatedMinute == minutes)
         {
             txtTask1Result.text = "WELL DONE!";
+            GameManager.instance.AddPoints(1);
             GenerateTime();
             hourPointer.GetComponent<HourPointer>().ResetTime();
             minutePointer.GetComponent<MinutePointer>().ResetTime();

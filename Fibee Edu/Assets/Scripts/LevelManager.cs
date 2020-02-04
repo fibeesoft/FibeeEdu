@@ -24,11 +24,14 @@ public class LevelManager : MonoBehaviour
     
     void Start()
     {
-        btnBack.onClick.AddListener(LoadPreviousScene);    
+        
+        btnBack.onClick.AddListener(delegate { StartCoroutine(LoadPreviousScene()); }) ;    
     }
 
-    void LoadPreviousScene()
+    IEnumerator LoadPreviousScene()
     {
+        GameObject.FindObjectOfType<DissolveController>().DissolveButton();
+        yield return new WaitForSeconds(1);
         if(SceneManager.GetActiveScene().buildIndex == (int)Scenes.Game)
         {
             SceneChanger.instance.LoadScene((int)Scenes.MainMenu);
@@ -37,6 +40,7 @@ public class LevelManager : MonoBehaviour
         {
             SceneChanger.instance.LoadScene((int)Scenes.Game);
         }
+        GameObject.FindObjectOfType<DissolveController>().ShowButton();
     }
 
     

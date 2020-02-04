@@ -3,7 +3,42 @@ guid: e748d26b2a1d34a48810497b413811f3
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: clock
+    second: {fileID: 2100000, guid: 679ee95f267c8764db81f7088838eb4c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: clock shield
+    second: {fileID: 2100000, guid: ec6e531008120c94ca3e177d2edc799a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: doors
+    second: {fileID: 2100000, guid: d198942a752e0d942a7b28ff07c254aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pointers
+    second: {fileID: 2100000, guid: d6baef4c7542596458fcfe1e56a9ec79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pointershours
+    second: {fileID: 2100000, guid: 9c1b60d78076ced499854ccbecee9ca9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: roof
+    second: {fileID: 2100000, guid: a34900cab4a2f0b439751e49976d5fc0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: walls
+    second: {fileID: 2100000, guid: f036003cd4755b64fbb9f272fef3d07f, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
