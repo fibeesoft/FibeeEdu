@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ClockTower.unity
     guid: 3174582032af3714695d8c7f13e5d873
+  - enabled: 1
+    path: Assets/Scenes/PitagorasHouse.unity
+    guid: eab9021b17f669049b0799a9d5e1a8c7
   m_configObjects: {}

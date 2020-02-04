@@ -9,7 +9,8 @@ public enum Scenes
 {
     MainMenu,
     Game,
-    ClockTower
+    ClockTower,
+    PitagorasHouse
 }
 
 public class SceneChanger : MonoBehaviour
