@@ -6,11 +6,11 @@ public class HourPointer : MonoBehaviour
 {
     Vector3 VScreen = new Vector3();
     Vector3 VWorld = new Vector3();
-    ClockTowerManager ClockTower;
+    ClockTower_MoveClockPointers clockTowerMoveClockPointer;
 
     private void Start()
     {
-        ClockTower = FindObjectOfType<ClockTowerManager>();
+        clockTowerMoveClockPointer = FindObjectOfType<ClockTower_MoveClockPointers>();
     }
     private void Update()
     {
@@ -30,7 +30,7 @@ public class HourPointer : MonoBehaviour
         float minuteAngle = 360f - transform.localEulerAngles.z;
 
         int hour = (int)( minuteAngle / 30);
-        ClockTower.GetHours(hour);
+        clockTowerMoveClockPointer.GetHours(hour);
     }
 
     public void ResetTime()

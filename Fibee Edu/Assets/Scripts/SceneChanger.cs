@@ -10,7 +10,17 @@ public enum Scenes
     MainMenu,
     Game,
     ClockTower,
+    ClockTowerSetTime,
+    ClockTowerReadTime,
     PitagorasHouse
+}
+
+public enum Tasks
+{
+    ClockTowerSetTime,
+    ClockTowerReadTime,
+    MultiplicationTable
+
 }
 
 public class SceneChanger : MonoBehaviour
