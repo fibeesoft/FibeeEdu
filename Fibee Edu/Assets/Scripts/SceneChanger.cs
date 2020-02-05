@@ -12,7 +12,8 @@ public enum Scenes
     ClockTower,
     ClockTowerSetTime,
     ClockTowerReadTime,
-    PitagorasHouse
+    PitagorasHouse,
+    webPlay
 }
 
 public enum Tasks
@@ -49,5 +50,10 @@ public class SceneChanger : MonoBehaviour
     public void LoadScene(int _sceneIndex)
     {
         SceneManager.LoadScene(_sceneIndex);
+    }
+
+    public void LoadWWW()
+    {
+        LoadScene((int)Scenes.webPlay);
     }
 }
