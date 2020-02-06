@@ -33,6 +33,8 @@ public class TasksExplanation : MonoBehaviour
         taskExplanationEngArray.Add("Read time from the analog clock and use sliders to set the same time on the digital one. \n" +
             "Once you set it, press CHECK button. If the answer was correct, new task will be generated.");
         taskExplanationEngArray.Add( "Multiplication table");
+        taskExplanationEngArray.Add( "Answer the question by typing the answer or by choosing one of the answers provided");
+
 
     }
 

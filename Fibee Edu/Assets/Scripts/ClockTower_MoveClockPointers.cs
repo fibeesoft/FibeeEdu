@@ -8,7 +8,7 @@ public class ClockTower_MoveClockPointers : MonoBehaviour
 {
     [SerializeField] GameObject minutePointer;
     [SerializeField] GameObject hourPointer;
-    [SerializeField] TextMeshProUGUI txtTime, txtTask1Result;
+    [SerializeField] TextMeshProUGUI txtTime;
     [SerializeField] Slider slider12_24Switch;
     int minutes, hours;
     int maxValue;
@@ -19,7 +19,6 @@ public class ClockTower_MoveClockPointers : MonoBehaviour
     void Start()
     {
         GameManager.instance.SwitchTask(Tasks.ClockTowerSetTime);
-        txtTask1Result.enabled = false;
         GenerateTime();
     }
 
@@ -67,11 +66,9 @@ public class ClockTower_MoveClockPointers : MonoBehaviour
 
     public void Check()
     {
-        StartCoroutine(DisplayTaskResultMessage());
         if ((generatedHour == hours || generatedHour == hours + 12) && generatedMinute == minutes)
         {
-            txtTask1Result.text = "WELL DONE!";
-            txtTask1Result.color = Color.green;
+            GameManager.instance.DisplayResultMessage(true);
             GameManager.instance.AddPoints(1);
             GenerateTime();
             hourPointer.GetComponent<HourPointer>().ResetTime();
@@ -79,16 +76,7 @@ public class ClockTower_MoveClockPointers : MonoBehaviour
         }
         else
         {
-            txtTask1Result.text = "TRY AGAIN!";
-            txtTask1Result.color = Color.red;
+            GameManager.instance.DisplayResultMessage(false);
         }
     }
-
-    IEnumerator DisplayTaskResultMessage()
-    {
-        txtTask1Result.enabled = true;
-        yield return new WaitForSeconds(1f);
-        txtTask1Result.enabled = false;
-    }
-
 }

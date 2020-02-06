@@ -50,19 +50,20 @@ public class MultiplicationTable : MonoBehaviour
     {
         if(inpAnswer.text.Trim() == result.ToString())
         {
+            GameManager.instance.DisplayResultMessage(true);
             ChangeCheckButtonColor(Color.green);
-            StartCoroutine( DisplayMessage("Well done!"));
             GameManager.instance.AddPoints(1);
             CreateExpression();
             
         }
         else
         {
+            GameManager.instance.DisplayResultMessage(false);
             ChangeCheckButtonColor(Color.red);
-            StartCoroutine(DisplayMessage("Try again!"));
             inpAnswer.ActivateInputField();
             inpAnswer.text = "";
         }
+        StartCoroutine(WaitAndChangeButtonColor());
 
     }
     void Update()
@@ -70,12 +71,9 @@ public class MultiplicationTable : MonoBehaviour
         
     }
 
-    IEnumerator DisplayMessage(string mess)
+    IEnumerator WaitAndChangeButtonColor()
     {
-        txtMessage.enabled = true;
-        txtMessage.text = mess;
         yield return new WaitForSeconds(1);
-        txtMessage.enabled = false;
         ChangeCheckButtonColor(new Color32(0, 185, 255, 255));
     }
 }

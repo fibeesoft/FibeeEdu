@@ -8,7 +8,7 @@ public class ClockTower_ReadTime : MonoBehaviour
 {
     [SerializeField] GameObject minutePointer;
     [SerializeField] GameObject hourPointer;
-    [SerializeField] TextMeshProUGUI txtTask1Result, txtTimeOfTheDay, txtMinute, txtHour;
+    [SerializeField] TextMeshProUGUI txtTimeOfTheDay, txtMinute, txtHour;
     [SerializeField] Slider slider12_24Switch, sliderMinute, sliderHour;
 
     int minute, hour;
@@ -80,32 +80,18 @@ public class ClockTower_ReadTime : MonoBehaviour
     {
         if(sliderMinute.value == minute && sliderHour.value == hour)
         {
-            txtTask1Result.text = "WELL DONE!";
+            GameManager.instance.DisplayResultMessage(true);
             GameManager.instance.AddPoints(1);
-            ChangeColor(Color.green);
             GenerateRandomTime();
         }
         else
         {
-            ChangeColor(Color.red);
-            txtTask1Result.text = "TRY AGAIN!";
-
+            GameManager.instance.DisplayResultMessage(false);
         }
-        txtTask1Result.gameObject.SetActive(true);
-        StartCoroutine(AfterCheck());
     }
 
-    void ChangeColor(Color c)
-    {
-        txtTask1Result.color = c;
-    }
 
-    IEnumerator AfterCheck()
-    {
-        yield return new WaitForSeconds(1f);
-        txtTask1Result.gameObject.SetActive(false);
-        ResetTxtMinuteHour();
-    }
+
 
 
     public void ResetTxtMinuteHour()

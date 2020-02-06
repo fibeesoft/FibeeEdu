@@ -13,6 +13,7 @@ public enum Scenes
     ClockTowerSetTime,
     ClockTowerReadTime,
     PitagorasHouse,
+    PitagorasHouseTextTasks,
     webPlay
 }
 
@@ -21,7 +22,8 @@ public enum Tasks
     NoTask,
     ClockTowerSetTime,
     ClockTowerReadTime,
-    MultiplicationTable
+    MultiplicationTable,
+    PitagorasHouseTextTasks
 
 }
 
