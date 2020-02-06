@@ -17,6 +17,7 @@ public class ClockTower_ReadTime : MonoBehaviour
 
     void Start()
     {
+        GameManager.instance.SwitchTask(Tasks.ClockTowerReadTime);
         txtTimeOfTheDay.gameObject.SetActive(false);
         GenerateRandomTime();
     }

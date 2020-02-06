@@ -30,8 +30,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator LoadPreviousScene()
     {
-        GameObject.FindObjectOfType<DissolveController>().DissolveButton();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.3f);
         if(SceneManager.GetActiveScene().buildIndex == (int)Scenes.Game)
         {
             SceneChanger.instance.LoadScene((int)Scenes.MainMenu);
@@ -40,7 +39,6 @@ public class LevelManager : MonoBehaviour
         {
             SceneChanger.instance.LoadScene((int)Scenes.Game);
         }
-        GameObject.FindObjectOfType<DissolveController>().ShowButton();
     }
 
     

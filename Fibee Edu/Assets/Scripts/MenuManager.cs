@@ -9,7 +9,9 @@ public class MenuManager : MonoBehaviour
 
 	void Start()
 	{
-		btnStartGame.onClick.AddListener(delegate { SceneChanger.instance.LoadScene((int)Scenes.Game); });
+        GameManager.instance.SwitchTask(Tasks.NoTask);
+
+        btnStartGame.onClick.AddListener(delegate { SceneChanger.instance.LoadScene((int)Scenes.Game); });
         if(GameManager.instance.GetClass() == 0)
         {
             GameManager.instance.DisplaySetClassContainer();

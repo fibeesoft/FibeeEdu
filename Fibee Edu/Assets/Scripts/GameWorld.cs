@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClockTower : MonoBehaviour
+public class GameWorld : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,10 +14,5 @@ public class ClockTower : MonoBehaviour
     void Update()
     {
         
-    }
-
-    private void OnMouseDown()
-    {
-        SceneChanger.instance.LoadScene((int)Scenes.ClockTower);
     }
 }

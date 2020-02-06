@@ -18,10 +18,17 @@ public enum Scenes
 
 public enum Tasks
 {
+    NoTask,
     ClockTowerSetTime,
     ClockTowerReadTime,
     MultiplicationTable
 
+}
+
+public enum Language
+{
+    English,
+    Polish
 }
 
 public class SceneChanger : MonoBehaviour

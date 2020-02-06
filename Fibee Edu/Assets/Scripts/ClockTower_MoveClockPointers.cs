@@ -18,6 +18,7 @@ public class ClockTower_MoveClockPointers : MonoBehaviour
 
     void Start()
     {
+        GameManager.instance.SwitchTask(Tasks.ClockTowerSetTime);
         txtTask1Result.enabled = false;
         GenerateTime();
     }

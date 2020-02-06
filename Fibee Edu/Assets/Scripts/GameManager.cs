@@ -9,10 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     [SerializeField] TextMeshProUGUI txtPoints;
     [SerializeField] TextMeshProUGUI txtClass;
-    [SerializeField] GameObject ClassRoomContainer;
+    [SerializeField] GameObject classRoomContainer;
     [SerializeField] Button btnClassRoom;
     int points = 0;
     int classSelected;
+    public Tasks CurrentTask { get; set; }
     private void Awake()
     {
         if(instance == null)
@@ -28,11 +29,17 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        
         DisplayPoints();
         btnClassRoom.onClick.AddListener(delegate {
             DisplaySetClassContainer();
         
         });
+    }
+
+    private void Update()
+    {
+      
     }
     void DisplayPoints()
     {
@@ -49,7 +56,7 @@ public class GameManager : MonoBehaviour
     {
         classSelected = c;
         txtClass.text = "CLASSROOM: " + classSelected;
-        ClassRoomContainer.SetActive(false);
+        classRoomContainer.SetActive(false);
     }
 
     public int GetClass()
@@ -59,6 +66,30 @@ public class GameManager : MonoBehaviour
 
     public void DisplaySetClassContainer()
     {
-        ClassRoomContainer.SetActive(true);
+        if (classRoomContainer.activeSelf)
+        {
+            if(classSelected != 0)
+            {
+                classRoomContainer.SetActive(false);
+            }
+            else
+            {
+                //prompt to choose classroom
+            }
+
+        }
+        else
+        {
+            classRoomContainer.SetActive(true);
+        }
     }
+
+    public void SwitchTask(Tasks t)
+    {
+        CurrentTask = t;
+        TasksExplanation.instance.ActivateTaskExplanationButton();
+    }
+
+
+
 }
