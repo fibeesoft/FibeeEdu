@@ -11,11 +11,30 @@ public class ClockTower_MoveClockPointers : MonoBehaviour
     [SerializeField] TextMeshProUGUI txtTime, txtTask1Result;
     [SerializeField] Slider slider12_24Switch;
     int minutes, hours;
+    int maxValue;
+    float tempMinutes, tempHours;
     int generatedMinute, generatedHour;
+    float speed = 80f;
+
     void Start()
     {
         txtTask1Result.enabled = false;
         GenerateTime();
+    }
+
+    private void Update()
+    {
+        if(tempHours < generatedHour)
+        {
+            tempHours += Time.deltaTime * speed + generatedHour * Time.deltaTime;
+            txtTime.text = tempHours.ToString("00") + " : " + tempMinutes.ToString("00");
+        }
+        if(tempMinutes < generatedMinute)
+        {
+            tempMinutes += Time.deltaTime * speed + generatedMinute * Time.deltaTime;
+            txtTime.text = tempHours.ToString("00") + " : " + tempMinutes.ToString("00");
+        }
+        
     }
 
     public void GetMinutes(int minutes)
@@ -30,7 +49,9 @@ public class ClockTower_MoveClockPointers : MonoBehaviour
 
     public void GenerateTime()
     {
-        int maxValue = 12;
+        tempMinutes = 0;
+        tempHours = 0;
+        maxValue = 12;
         if (slider12_24Switch.value == 0)
         {
             maxValue = 12;
@@ -41,7 +62,6 @@ public class ClockTower_MoveClockPointers : MonoBehaviour
         }
         generatedHour = Random.Range(0, maxValue);
         generatedMinute = Random.Range(0, 60);
-        txtTime.text = generatedHour.ToString("00") + " : " + generatedMinute.ToString("00");
     }
 
     public void Check()
@@ -50,6 +70,7 @@ public class ClockTower_MoveClockPointers : MonoBehaviour
         if ((generatedHour == hours || generatedHour == hours + 12) && generatedMinute == minutes)
         {
             txtTask1Result.text = "WELL DONE!";
+            txtTask1Result.color = Color.green;
             GameManager.instance.AddPoints(1);
             GenerateTime();
             hourPointer.GetComponent<HourPointer>().ResetTime();
@@ -58,7 +79,7 @@ public class ClockTower_MoveClockPointers : MonoBehaviour
         else
         {
             txtTask1Result.text = "TRY AGAIN!";
-
+            txtTask1Result.color = Color.red;
         }
     }
 

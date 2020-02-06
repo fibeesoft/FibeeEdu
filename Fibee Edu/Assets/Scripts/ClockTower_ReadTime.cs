@@ -12,6 +12,8 @@ public class ClockTower_ReadTime : MonoBehaviour
     [SerializeField] Slider slider12_24Switch, sliderMinute, sliderHour;
 
     int minute, hour;
+    float minuteAngle, hourAngle, tempMinuteAngle = 0, tempHourAngle = 0;
+    float pointerSpeed = 150f;
 
     void Start()
     {
@@ -21,6 +23,8 @@ public class ClockTower_ReadTime : MonoBehaviour
 
     public void GenerateRandomTime()
     {
+        tempMinuteAngle = 0;
+        tempHourAngle = 0;
         sliderHour.value = 0;
         sliderMinute.value = 0;
         minute = Random.Range(0, 60);
@@ -50,12 +54,26 @@ public class ClockTower_ReadTime : MonoBehaviour
     public void MoveClockPointers()
     {
         int temp_hour = hour < 12 ? hour : hour - 12;
-        print(minute);
-        print(hour);
-        minutePointer.transform.localRotation = Quaternion.Euler(0f, 0f, -minute * 6);
-        hourPointer.transform.localRotation = Quaternion.Euler(0f, 0f, -temp_hour * 30 - (minute / 2f));
+        minuteAngle = -minute * 6;
+        hourAngle = -temp_hour * 30 - (minute / 2f);
+
     }
 
+    void Update()
+    {
+ 
+        if(tempMinuteAngle > minuteAngle)
+        {
+            tempMinuteAngle -= Time.deltaTime * pointerSpeed + -minuteAngle * Time.deltaTime;
+            minutePointer.transform.localEulerAngles = new Vector3(0f, 0f, tempMinuteAngle);
+        }
+        if (tempHourAngle > hourAngle)
+        {
+            tempHourAngle -= Time.deltaTime * pointerSpeed + -hourAngle * Time.deltaTime;
+            hourPointer.transform.localEulerAngles = new Vector3(0f, 0f, tempHourAngle);
+        }
+        
+    }
     
     public void Check()
     {
@@ -88,15 +106,12 @@ public class ClockTower_ReadTime : MonoBehaviour
         ResetTxtMinuteHour();
     }
 
-    void Update()
-    {
-        
-    }
 
     public void ResetTxtMinuteHour()
     {
-        txtMinute.text = "00";
-        txtHour.text = "00";
+        sliderHour.value = 0;
+        sliderMinute.value = 0;
+        UpdateHourMinuteSliders();
     }
 
     public void UpdateHourMinuteSliders()

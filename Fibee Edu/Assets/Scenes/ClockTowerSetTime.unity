@@ -1351,8 +1351,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 18.5}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -580, y: -306}
-  m_SizeDelta: {x: 986, y: 377.6}
+  m_AnchoredPosition: {x: 5, y: 1}
+  m_SizeDelta: {x: 1134.4, y: 595.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1432350360
 MonoBehaviour:
@@ -1381,8 +1381,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4286829562
-  m_fontColor: {r: 0.9811321, g: 0.8291464, b: 0.51370597, a: 1}
+    rgba: 4278255369
+  m_fontColor: {r: 0.034784317, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1400,8 +1400,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 200
-  m_fontSizeBase: 200
+  m_fontSize: 423.7
+  m_fontSizeBase: 423.7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1438,7 +1438,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: -1.7012614, z: -1.9352434, w: 0}
   m_textInfo:
     textComponent: {fileID: 1432350360}
     characterCount: 4

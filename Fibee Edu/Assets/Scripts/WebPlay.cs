@@ -41,18 +41,6 @@ public class WebPlay : MonoBehaviour
         }
     }
 
-
-    public void pushData()
-    {
-        string url2 = "www.pikademia.pl/apps/update.php";
-        string id = txtId.text;
-        string username = txtUsername.text;
-        WWWForm form = new WWWForm();
-        form.AddField("_playerIdPost", id);
-        form.AddField("_playerUsernamePost", username); 
-        WWW push_Data = new WWW(url2, form);
-    }
-
     public void PushToServer()
     {
         StartCoroutine(UploadToServer());
