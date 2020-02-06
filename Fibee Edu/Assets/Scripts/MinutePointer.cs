@@ -32,9 +32,10 @@ public class MinutePointer : MonoBehaviour
         float minuteAngle = 360f - transform.localEulerAngles.z;
         int minute = minuteAngle < 357f ? Mathf.RoundToInt(minuteAngle / 6) : 59;
         clockTowerMoveClockPointer.GetMinutes(minute);
-        print(transform.position.x);
-        print(transform.localPosition.x);
-        print(dir);
+        //print(transform.position.x);
+        //print(transform.localPosition.x);
+        //print(dir);
+        print("minute: " + minute);
     }
     public void ResetTime()
     {

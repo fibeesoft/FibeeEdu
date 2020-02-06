@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - BackButton
+  - Ground
   layers:
   - Default
   - TransparentFX

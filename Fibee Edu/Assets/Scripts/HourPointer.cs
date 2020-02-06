@@ -31,6 +31,7 @@ public class HourPointer : MonoBehaviour
 
         int hour = (int)( minuteAngle / 30);
         clockTowerMoveClockPointer.GetHours(hour);
+        print("hour: " + hour);
     }
 
     public void ResetTime()
