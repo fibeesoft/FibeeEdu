@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI txtClass;
     [SerializeField] GameObject classRoomContainer;
     [SerializeField] Button btnClassRoom;
-    int points = 0;
+    public int Points { get; set;}
     int classSelected;
     public Tasks CurrentTask { get; set; }
     private void Awake()
@@ -43,20 +43,23 @@ public class GameManager : MonoBehaviour
     }
     void DisplayPoints()
     {
-        txtPoints.text = "POINTS: " + points.ToString();
+        txtPoints.text = "POINTS: " + Points.ToString();
     }
 
     public void AddPoints(int point)
     {
-        points += point;
+        Points += point;
         DisplayPoints();
+        SaveProgress.instance.SaveData();
     }
+
 
     public void SetClass(int c)
     {
         classSelected = c;
         txtClass.text = "CLASSROOM: " + classSelected;
         classRoomContainer.SetActive(false);
+        SaveProgress.instance.SaveData();
     }
 
     public int GetClass()
