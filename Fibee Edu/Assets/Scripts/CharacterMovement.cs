@@ -11,9 +11,10 @@ public class CharacterMovement : MonoBehaviour
     void Update()
     {
 
-        bool RMB = Input.GetMouseButtonDown(1);
+        bool LMB = Input.GetMouseButtonDown(0);
+        bool RMB = Input.GetMouseButton(1);
 
-        if (RMB)
+        if (LMB)
         {
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -37,6 +38,11 @@ public class CharacterMovement : MonoBehaviour
             {
                 isNewPositionSet = false;
             }
+        }
+
+        if (RMB)
+        {
+
         }
     }
 }
