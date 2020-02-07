@@ -40,7 +40,11 @@ public class AddTaskToDataBase : MonoBehaviour
             else
             {
                 Debug.Log("Form upload complete!");
+                Debug.Log(www.downloadHandler.text);
             }
         }
+
+        inpAnswer.text = "";
+        inpQuestion.text = "";
     }
 }

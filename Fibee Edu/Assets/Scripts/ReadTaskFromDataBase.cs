@@ -6,26 +6,18 @@ using UnityEngine.UI;
 
 public class ReadTaskFromDataBase : MonoBehaviour
 {
-    [SerializeField] Text txt;
     [SerializeField] Dropdown dropID;
     string url = "www.pikademia.pl/apps/selectparameter.php";
     string[] tasks;
-
-    string id;
     public void PullFromServer()
     {
         StartCoroutine(PullData());
     }
 
-
-
- 
-
-    
     IEnumerator PullData()
     {
         WWWForm form = new WWWForm();
-        form.AddField("_id", id);
+        form.AddField("id", dropID.value);
         using (UnityWebRequest www = UnityWebRequest.Post(url, form))
         {
             yield return www.SendWebRequest();
@@ -36,27 +28,14 @@ public class ReadTaskFromDataBase : MonoBehaviour
             else
             {
                 Debug.Log("Form upload complete!");
-            }
-
-        }
-
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
-        {
-            // Request and wait for the desired page.
-            yield return webRequest.SendWebRequest();
-            if (webRequest.isNetworkError)
-            {
-                Debug.Log("Error: " + webRequest.error);
-            }
-            else
-            {
-                Debug.Log("Received: " + webRequest.downloadHandler.text);
-                string fulldata = webRequest.downloadHandler.text;
-                tasks = fulldata.Split('|');
-                foreach (var t in tasks)
-                {     
-                    txt.text += t + "\n"; 
-                }
+                Debug.Log(www.downloadHandler.text);
+                
+                    //string fulldata = webRequest.downloadHandler.text;
+                    //tasks = fulldata.Split('|');
+                    //foreach (var t in tasks)
+                    //{
+                        //   txt.text += t + "\n";
+                    //}
             }
         }
     }
