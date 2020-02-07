@@ -73,10 +73,12 @@ public class ClockTower_MoveClockPointers : MonoBehaviour
             GenerateTime();
             hourPointer.GetComponent<HourPointer>().ResetTime();
             minutePointer.GetComponent<MinutePointer>().ResetTime();
+            GameManager.instance.ActivateCheckButton(true);
         }
         else
         {
             GameManager.instance.DisplayResultMessage(false);
+            GameManager.instance.ActivateCheckButton(false);
         }
     }
 }

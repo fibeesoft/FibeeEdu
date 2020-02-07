@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI txtClass, txtResultMessage;
     [SerializeField] GameObject classRoomContainer;
     [SerializeField] Button btnClassRoom;
+
     public int Points { get; set;}
     int classSelected;
     public Tasks CurrentTask { get; set; }
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
             DisplaySetClassContainer();
         
         });
+        
     }
 
     private void Update()
@@ -114,5 +116,21 @@ public class GameManager : MonoBehaviour
         txtResultMessage.gameObject.SetActive(false);
     }
 
+    public void ActivateCheckButton(bool isAnswerCorrect)
+    {
+        GameObject checkButtonAnim;
+        checkButtonAnim = GameObject.FindGameObjectWithTag("CheckButton");
+        if (checkButtonAnim != null)
+        {
+            if (isAnswerCorrect)
+            {
+                checkButtonAnim.GetComponent<Animator>().SetTrigger("buttonGoodAnswer");
+            }
+            else
+            {
+                checkButtonAnim.GetComponent<Animator>().SetTrigger("buttonBadAnswer");
+            }
+        }
+    }
 
 }

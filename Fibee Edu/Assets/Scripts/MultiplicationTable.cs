@@ -8,7 +8,6 @@ public class MultiplicationTable : MonoBehaviour
 {
     [SerializeField] Text txtExpression, txtMessage;
     [SerializeField] InputField inpAnswer;
-    [SerializeField] Button buttonCheck;
     [SerializeField] Slider sliderMaxValue;
     [SerializeField] TextMeshProUGUI txtMaxValue;
 
@@ -42,7 +41,6 @@ public class MultiplicationTable : MonoBehaviour
     }
     void ChangeCheckButtonColor(Color c)
     {
-        buttonCheck.image.color = c;
         txtMessage.color = c;
     }
 
@@ -53,6 +51,7 @@ public class MultiplicationTable : MonoBehaviour
             GameManager.instance.DisplayResultMessage(true);
             ChangeCheckButtonColor(Color.green);
             GameManager.instance.AddPoints(1);
+            GameManager.instance.ActivateCheckButton(true);
             CreateExpression();
             
         }
@@ -61,6 +60,7 @@ public class MultiplicationTable : MonoBehaviour
             GameManager.instance.DisplayResultMessage(false);
             ChangeCheckButtonColor(Color.red);
             inpAnswer.ActivateInputField();
+            GameManager.instance.ActivateCheckButton(false);
             inpAnswer.text = "";
         }
         StartCoroutine(WaitAndChangeButtonColor());

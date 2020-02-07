@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BackButton
   - Ground
+  - CheckButton
   layers:
   - Default
   - TransparentFX

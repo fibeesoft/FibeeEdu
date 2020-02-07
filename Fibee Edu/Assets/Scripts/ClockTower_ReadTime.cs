@@ -20,6 +20,7 @@ public class ClockTower_ReadTime : MonoBehaviour
         GameManager.instance.SwitchTask(Tasks.ClockTowerReadTime);
         txtTimeOfTheDay.gameObject.SetActive(false);
         GenerateRandomTime();
+        
     }
 
     public void GenerateRandomTime()
@@ -83,10 +84,12 @@ public class ClockTower_ReadTime : MonoBehaviour
             GameManager.instance.DisplayResultMessage(true);
             GameManager.instance.AddPoints(1);
             GenerateRandomTime();
+            GameManager.instance.ActivateCheckButton(true);
         }
         else
         {
             GameManager.instance.DisplayResultMessage(false);
+            GameManager.instance.ActivateCheckButton(false);
         }
     }
 

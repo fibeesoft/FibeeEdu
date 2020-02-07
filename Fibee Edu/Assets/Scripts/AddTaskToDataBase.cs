@@ -8,6 +8,8 @@ public class AddTaskToDataBase : MonoBehaviour
 {
     [SerializeField] InputField inpQuestion;
     [SerializeField] InputField inpAnswer;
+    [SerializeField] InputField inpHelp;
+    [SerializeField] InputField inpSolution;
     [SerializeField] Dropdown dropClass;
     [SerializeField] Dropdown dropCategory;
 
@@ -22,12 +24,16 @@ public class AddTaskToDataBase : MonoBehaviour
         string question = inpQuestion.text;
         string answer = inpAnswer.text;
         string classPick = dropClass.value.ToString();
-        string category = dropCategory.value.ToString();
+        string subject = dropCategory.value.ToString();
+        string help = inpHelp.text;
+        string solution = inpSolution.text;
         WWWForm form = new WWWForm();
         form.AddField("_questionPost", question);
         form.AddField("_answerPost", answer);
         form.AddField("_classPickPost", classPick);
-        form.AddField("_category", category);
+        form.AddField("_subject", subject);
+        form.AddField("_help", help);
+        form.AddField("_solution", solution);
 
         using (UnityWebRequest www = UnityWebRequest.Post(url, form))
         {

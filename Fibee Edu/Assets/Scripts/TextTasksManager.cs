@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class TextTasksManager : MonoBehaviour
@@ -9,62 +10,70 @@ public class TextTasksManager : MonoBehaviour
     [SerializeField] Button btnCheck;
     [SerializeField] InputField inpAnswer;
     [SerializeField] Text txtTaskNumber;
-
-    public List<TextTasks> tasksList;
-    public int textTaskNumber = 0;
+    string goodAnswer, solution;
+    int textTaskNumber = 33;
      void Start()
     {
-        CreateTasksList();
         GenerateTextTask();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void CreateTasksList()
-    {
-        tasksList.Add(new TextTasks(0, "Jakiego koloru jest biały maluch?", "biały"));
-        tasksList.Add(new TextTasks(1, "Jakiego koloru jest zielony maluch?", "zielony"));
-    }
-
-    void NextTask()
-    {
-        if(textTaskNumber < tasksList.Count - 1)
-        {
-            textTaskNumber++;
-        }
-        else
-        {
-            textTaskNumber = 0;
-        }
-        GenerateTextTask();
-    }
 
     public void GenerateTextTask()
     {
 
-        txtTask.text = tasksList[textTaskNumber].taskQuestion;
-        txtTaskNumber.text = tasksList[textTaskNumber].id.ToString();
+        
         inpAnswer.text = "";
         inpAnswer.ActivateInputField();
+        PullFromServer();
     }
 
     public void Check()
     {
-        if(inpAnswer.text.ToLower().Trim() == tasksList[textTaskNumber].taskGoodAnswer)
+        if(inpAnswer.text.ToLower().Trim() == goodAnswer)
         {
             GameManager.instance.DisplayResultMessage(true);
             GameManager.instance.AddPoints(1);
-            NextTask();
+           
         }
         else
         {
             GameManager.instance.DisplayResultMessage(false);
             inpAnswer.text = "";
             inpAnswer.ActivateInputField();
+        }
+    }
+
+
+    string url = "www.pikademia.pl/apps/selectparameter.php";
+    string[] tasks;
+    public void PullFromServer()
+    {
+        StartCoroutine(PullData());
+    }
+
+    IEnumerator PullData()
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("id", textTaskNumber);
+        using (UnityWebRequest www = UnityWebRequest.Post(url, form))
+        {
+            yield return www.SendWebRequest();
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log("Form upload complete!");
+                Debug.Log(www.downloadHandler.text);
+
+                string fulldata = www.downloadHandler.text;
+                tasks = fulldata.Split('|');
+                txtTaskNumber.text = tasks[0];
+                txtTask.text = tasks[1];
+                goodAnswer = tasks[2];
+                solution = tasks[3];
+            }
         }
     }
 
