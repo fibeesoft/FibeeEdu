@@ -14,12 +14,12 @@ public class ReadTaskFromDataBase : MonoBehaviour
     string id;
     public void PullFromServer()
     {
-        StartCoroutine(PullData());
+        StartCoroutine(PullFromServerA());
     }
-    IEnumerator PullData()
-    {
-        txt.text = "";
 
+
+    IEnumerator PullFromServerA()
+    {
         WWWForm form = new WWWForm();
         form.AddField("_id", id);
 
@@ -34,10 +34,14 @@ public class ReadTaskFromDataBase : MonoBehaviour
             else
             {
                 Debug.Log("Form upload complete!");
+
             }
         }
 
-
+        StartCoroutine(PullData());
+    }
+    IEnumerator PullData()
+    {
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
             // Request and wait for the desired page.
