@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     {
         classSelected = c;
         txtClass.text = classSelected.ToString();
-        classRoomContainer.SetActive(false);
+        //classRoomContainer.SetActive(false);
         SaveProgress.instance.SaveData();
     }
 
