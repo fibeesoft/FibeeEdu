@@ -42,7 +42,7 @@ public class Clock : MonoBehaviour
         if (isReadOn)
         {
             float minuteAngle = -generatedMinute * 6;
-            float hourAngle = -generatedHour * 30;
+            float hourAngle = -generatedHour * 30 - generatedMinute/2;
             minuteHandler.transform.localEulerAngles = new Vector3(0f, 0f, minuteAngle);
             hourHandler.transform.localEulerAngles = new Vector3(0f, 0f, hourAngle);
 
@@ -50,7 +50,7 @@ public class Clock : MonoBehaviour
         else
         {
             float minuteAngle = -sliderMinute.value * 6;
-            float hourAngle = -sliderHour.value * 30;
+            float hourAngle = -sliderHour.value * 30 - sliderMinute.value / 2;
             minuteHandler.transform.localEulerAngles = new Vector3(0f, 0f, minuteAngle);
             hourHandler.transform.localEulerAngles = new Vector3(0f, 0f, hourAngle);
         }
@@ -86,6 +86,7 @@ public class Clock : MonoBehaviour
     {
         Animations.instance.AnimateAnswerResultText(true);
         btnCheck.GetComponent<CheckButton>().ActivateCheckButton(true);
+        GameManager.instance.AddPoints(1);
         CreateTask();
 
     }

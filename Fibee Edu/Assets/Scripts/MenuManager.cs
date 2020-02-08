@@ -9,13 +9,8 @@ public class MenuManager : MonoBehaviour
 
 	void Start()
 	{
-        GameManager.instance.SwitchTask(Tasks.NoTask);
 
         btnStartGame.onClick.AddListener(delegate { SceneChanger.instance.LoadScene((int)Scenes.Game); });
-        if(MainUI.instance.GetClass() == 0)
-        {
-            MainUI.instance.DisplaySetClassContainer();
-        }
 	}
 
     public void QuitTheGame()
@@ -23,4 +18,8 @@ public class MenuManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void ResetData()
+    {
+        SaveProgress.instance.ResetData();
+    }
 }

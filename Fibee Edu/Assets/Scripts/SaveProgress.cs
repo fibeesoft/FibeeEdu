@@ -49,4 +49,14 @@ public class SaveProgress : MonoBehaviour
         PlayerPrefs.SetInt("PPclassroom", MainUI.instance.GetClass());
     }
 
+    public void ResetData()
+    {
+        //PlayerPrefs.DeleteAll();
+        GameManager.instance.Points = 0;
+        MainUI.instance.SetClass(0);
+        print("playerprefs reseted");
+        SceneChanger.instance.LoadScene((int)Scenes.MainMenu);
+    }
+
+    
 }

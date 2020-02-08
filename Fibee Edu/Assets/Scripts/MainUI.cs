@@ -41,7 +41,7 @@ public class MainUI : MonoBehaviour
     }
     IEnumerator ShowClassPickContainerCor()
     {
-        if (classPickContainer.activeSelf)
+        if (classPickContainer.activeSelf && classSelected != 0)
         {
             Animations.instance.AnimateClassPickContainer(false);
             yield return new WaitForSeconds(1.3f);
@@ -59,9 +59,10 @@ public class MainUI : MonoBehaviour
     {
         classSelected = c;
         txtClass.text = classSelected.ToString();
-        //classRoomContainer.SetActive(false);
+        CheckIfClassWasSelected();
         SaveProgress.instance.SaveData();
     }
+
     public int GetClass()
     {
         return classSelected;
@@ -90,14 +91,28 @@ public class MainUI : MonoBehaviour
             }
             else
             {
-                //prompt to choose classroom
+                Animations.instance.AnimateClassPickContainer(true);
             }
 
         }
         else
         {
             classPickContainer.SetActive(true);
+            Animations.instance.AnimateClassPickContainer(true);
 
+        }
+    }
+
+    void CheckIfClassWasSelected()
+    {
+
+        if(classSelected == 0)
+        {
+            ShowClassPickContainer();
+        }
+        else
+        {
+            return;
         }
     }
 

@@ -17,10 +17,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Clock.unity
     guid: 3174582032af3714695d8c7f13e5d873
-  - enabled: 1
-    path: Assets/Scenes/PitagorasHouseTextTasks.unity
-    guid: 467a404954629a442b87831e944ae3b6
-  - enabled: 1
-    path: Assets/Scenes/WebPlay.unity
-    guid: 2981f68ef0b819c4982206099816b27a
   m_configObjects: {}
