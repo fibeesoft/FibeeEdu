@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MultiplicationTable.unity
     guid: da3406cd96bb5bd40bdd5a2e30906cea
   - enabled: 1
-    path: Assets/Scenes/ClockTower.unity
+    path: Assets/Scenes/Clock.unity
     guid: 3174582032af3714695d8c7f13e5d873
   - enabled: 1
     path: Assets/Scenes/PitagorasHouseTextTasks.unity

@@ -2045,5 +2045,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: btnMultiplication
       objectReference: {fileID: 0}
+    - target: {fileID: 5883317387988484359, guid: f76fafeb41806974e87c1b113fe68e19,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f76fafeb41806974e87c1b113fe68e19, type: 3}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class Animations : MonoBehaviour
@@ -9,6 +10,7 @@ public class Animations : MonoBehaviour
     public static Animations instance;
     [SerializeField] Button btnBack;
     [SerializeField] GameObject classPickContainer;
+    [SerializeField] TextMeshProUGUI txtAnswerMessage;
     void Awake()
     {
         if(instance == null)
@@ -55,5 +57,27 @@ public class Animations : MonoBehaviour
 
     }
 
+    public void AnimateAnswerResultText(bool isCorrect)
+    {
+        StartCoroutine(AnimateAnswerResultTextCor());
+
+        IEnumerator AnimateAnswerResultTextCor()
+        {
+            txtAnswerMessage.gameObject.SetActive(true);
+            if (isCorrect)
+            {
+                txtAnswerMessage.color = Color.green;
+                txtAnswerMessage.text = "WELL DONE!";
+            }
+            else
+            {
+                txtAnswerMessage.color = Color.red;
+                txtAnswerMessage.text = "TRY AGAIN!";
+            }
+
+            yield return new WaitForSeconds(1.5f);
+            txtAnswerMessage.gameObject.SetActive(false);
+        }
+    }
 
 }
