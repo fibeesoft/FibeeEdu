@@ -2391,7 +2391,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1945655214}
-  - component: {fileID: 2255728566860269278}
   m_Layer: 5
   m_Name: MainUI
   m_TagString: Untagged
@@ -2421,18 +2420,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 150}
   m_Pivot: {x: 0.5, y: 1}
---- !u!114 &2255728566860269278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1945655213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4daa066651402894b9aff7f06ba2f739, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1954163210
 GameObject:
   m_ObjectHideFlags: 0
@@ -2943,7 +2930,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5209b8b5567a5fd499c4b517331e3d29, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 16e2fa92b90fd1b4fab6d945a379d8b2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2995,7 +2982,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8577015847192366742}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3025563546837835578}
+        m_MethodName: AnimBtnBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!95 &3317491107499951121
 Animator:
   serializedVersion: 3
@@ -3497,7 +3495,7 @@ GameObject:
   - component: {fileID: 1820622431}
   - component: {fileID: 4523012336018482292}
   m_Layer: 5
-  m_Name: ClassroomPicker
+  m_Name: ClassPickContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3522,7 +3520,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8.899902, y: -121.599976}
+  m_AnchoredPosition: {x: 8.899902, y: -121.59985}
   m_SizeDelta: {x: -125, y: -299.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3317491107114775912
@@ -4100,7 +4098,7 @@ GameObject:
   - component: {fileID: 4991440830589085346}
   - component: {fileID: 4991440830589085349}
   m_Layer: 5
-  m_Name: ButtonClassRoom
+  m_Name: ButtonClassPick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4375,6 +4373,7 @@ GameObject:
   - component: {fileID: 2070054935}
   - component: {fileID: 3397272459908612345}
   - component: {fileID: 681952458}
+  - component: {fileID: 3025563546837835578}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4426,8 +4425,6 @@ MonoBehaviour:
   txtPoints: {fileID: 4991440830107720603}
   txtClass: {fileID: 4991440830987738882}
   txtResultMessage: {fileID: 982992360}
-  classRoomContainer: {fileID: 3317491107114775915}
-  btnClassRoom: {fileID: 4991440830589085349}
 --- !u!114 &2070054935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4467,6 +4464,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4daa066651402894b9aff7f06ba2f739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btnBack: {fileID: 3596322226531109124}
+  btnClassPick: {fileID: 4991440830589085349}
+  classPickContainer: {fileID: 3317491107114775915}
+  txtClass: {fileID: 4991440830987738882}
+--- !u!114 &3025563546837835578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5545481470070771557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc4dc47db5b62b24fac89c9a3c4f2206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  btnBack: {fileID: 3596322226531109124}
+  classPickContainer: {fileID: 3317491107114775915}
 --- !u!1 &6993757713568628172
 GameObject:
   m_ObjectHideFlags: 0

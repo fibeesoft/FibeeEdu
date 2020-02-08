@@ -25,31 +25,10 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         
-        btnBack.onClick.AddListener(delegate { StartCoroutine(LoadPreviousScene()); }) ;
-        btnBack.GetComponent<Animator>().SetTrigger("animOn");
     }
 
-    IEnumerator LoadPreviousScene()
-    {
 
-        btnBack.GetComponent<Animator>().SetTrigger("animOut");
-        yield return new WaitForSeconds(0.3f);
-        if(SceneManager.GetActiveScene().buildIndex == (int)Scenes.Game)
-        {
-            SceneChanger.instance.LoadScene((int)Scenes.MainMenu);
-            btnBack.GetComponent<Animator>().SetTrigger("animOn");
-        }
-        else
-        {
-            SceneChanger.instance.LoadScene((int)Scenes.Game);
-            btnBack.GetComponent<Animator>().SetTrigger("animOn");
-        }
-    }
 
-    public void ActivateBackButton()
-    {
-        btnBack.GetComponent<Animator>().SetTrigger("animOn");
-    }
     
     
 }

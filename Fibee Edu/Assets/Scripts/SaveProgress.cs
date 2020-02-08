@@ -32,11 +32,11 @@ public class SaveProgress : MonoBehaviour
         if (
             PlayerPrefs.HasKey("PPclassroom"))
         {
-            GameManager.instance.SetClass(PlayerPrefs.GetInt("PPclassroom"));
+            MainUI.instance.SetClass(PlayerPrefs.GetInt("PPclassroom"));
         }
         else
         {
-            GameManager.instance.SetClass(0);
+            MainUI.instance.SetClass(0);
 
         }
         SaveData();
@@ -46,7 +46,7 @@ public class SaveProgress : MonoBehaviour
     public void SaveData()
     {
         PlayerPrefs.SetInt("PPpoints", GameManager.instance.Points);
-        PlayerPrefs.SetInt("PPclassroom", GameManager.instance.GetClass());
+        PlayerPrefs.SetInt("PPclassroom", MainUI.instance.GetClass());
     }
 
 }
