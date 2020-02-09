@@ -106,7 +106,6 @@ public class MultiplicationInColumn : MonoBehaviour
 
         num1 = Random.Range(minValueNum1, maxValueNum1);
         num2 = Random.Range(minValueNum2, maxValueNum2);
-        print(num1 + " X " + num2);
 
     }
 

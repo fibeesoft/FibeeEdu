@@ -46,28 +46,6 @@ public class Animations : MonoBehaviour
 
     }
 
-    public void AnimateAnswerResultText(bool isCorrect)
-    {
-        StartCoroutine(AnimateAnswerResultTextCor());
-
-        IEnumerator AnimateAnswerResultTextCor()
-        {
-            txtAnswerMessage.gameObject.SetActive(true);
-            if (isCorrect)
-            {
-                txtAnswerMessage.color = Color.green;
-                txtAnswerMessage.text = "WELL DONE!";
-            }
-            else
-            {
-                txtAnswerMessage.color = Color.red;
-                txtAnswerMessage.text = "TRY AGAIN!";
-            }
-
-            yield return new WaitForSeconds(1.0f);
-            txtAnswerMessage.gameObject.SetActive(false);
-        }
-    }
 
     public void AnimateCheckButton(bool isCorrect)
     {

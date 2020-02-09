@@ -11,6 +11,7 @@ public enum Scenes
     Game,
     Clock,
     MultiplicationTable,
+    Dividing,
     MathTextTask,
     webPlay
 }

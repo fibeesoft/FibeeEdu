@@ -84,7 +84,7 @@ public class Clock : MonoBehaviour
 
     void Success()
     {
-        Animations.instance.AnimateAnswerResultText(true);
+        Animations.instance.DisplayResultMessage(true);
         Animations.instance.AnimateCheckButton(true);
         GameManager.instance.AddPoints(1);
         CreateTask();
@@ -93,7 +93,7 @@ public class Clock : MonoBehaviour
 
     void Fail()
     {
-        Animations.instance.AnimateAnswerResultText(false);
+        Animations.instance.DisplayResultMessage(false);
         Animations.instance.AnimateCheckButton(false);
     }
 
