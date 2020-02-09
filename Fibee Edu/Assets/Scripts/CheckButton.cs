@@ -12,16 +12,16 @@ public class CheckButton : MonoBehaviour
     }
 
 
-    public void ActivateCheckButton(bool isGood)
-    {
-        if (isGood)
-        {
-            gameObject.GetComponent<Animator>().SetTrigger("buttonGoodAnswer");
-        }
-        else
-        {
-            gameObject.GetComponent<Animator>().SetTrigger("buttonBadAnswer");
-        }
-    }
+    //public void ActivateCheckButton(bool isGood)
+    //{
+    //    if (isGood)
+    //    {
+    //        gameObject.GetComponent<Animator>().SetTrigger("buttonGoodAnswer");
+    //    }
+    //    else
+    //    {
+    //        gameObject.GetComponent<Animator>().SetTrigger("buttonBadAnswer");
+    //    }
+    //}
 
 }

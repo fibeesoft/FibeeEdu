@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Clock.unity
     guid: 3174582032af3714695d8c7f13e5d873
+  - enabled: 1
+    path: Assets/Scenes/MultiplicationInColumn.unity
+    guid: 3547f4ae1ba212e4182b7e0bf0fd26ad
   m_configObjects: {}

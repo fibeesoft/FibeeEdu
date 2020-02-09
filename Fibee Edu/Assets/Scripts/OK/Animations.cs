@@ -24,18 +24,6 @@ public class Animations : MonoBehaviour
     }
 
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     public void AnimBtnBack()
     {
         btnBack.GetComponent<Animator>().SetTrigger("StartAnim");
@@ -75,9 +63,23 @@ public class Animations : MonoBehaviour
                 txtAnswerMessage.text = "TRY AGAIN!";
             }
 
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.0f);
             txtAnswerMessage.gameObject.SetActive(false);
         }
     }
 
+    public void AnimateCheckButton(bool isCorrect)
+    {
+        Animator btnCheckAnim = GameObject.FindObjectOfType<CheckButton>().GetComponent<Animator>();
+      
+            if (isCorrect)
+            {
+            btnCheckAnim.SetTrigger("buttonGoodAnswer");
+            }
+            else
+            {
+            btnCheckAnim.SetTrigger("buttonBadAnswer");
+            }
+
+    }
 }

@@ -13,7 +13,7 @@ public class MainWindowTaskChooser : MonoBehaviour
         {
             int x = i;
             taskChooseButtons[i].onClick.AddListener(delegate { LoadTaskScene(x + 2); });
-            print(i);
+            //print("task choosen: " + i);
         }
     }
 

@@ -85,7 +85,7 @@ public class Clock : MonoBehaviour
     void Success()
     {
         Animations.instance.AnimateAnswerResultText(true);
-        btnCheck.GetComponent<CheckButton>().ActivateCheckButton(true);
+        Animations.instance.AnimateCheckButton(true);
         GameManager.instance.AddPoints(1);
         CreateTask();
 
@@ -94,7 +94,7 @@ public class Clock : MonoBehaviour
     void Fail()
     {
         Animations.instance.AnimateAnswerResultText(false);
-        btnCheck.GetComponent<CheckButton>().ActivateCheckButton(false);
+        Animations.instance.AnimateCheckButton(false);
     }
 
     void SetTheOption()

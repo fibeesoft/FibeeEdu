@@ -9,22 +9,18 @@ public enum Scenes
 {
     MainMenu,
     Game,
-    ClockTower,
-    ClockTowerSetTime,
-    ClockTowerReadTime,
-    PitagorasHouse,
-    PitagorasHouseTextTasks,
+    Clock,
+    MultiplicationTable,
+    MathTextTask,
     webPlay
 }
 
 public enum Tasks
 {
     NoTask,
-    ClockTowerSetTime,
-    ClockTowerReadTime,
+    Clock,
     MultiplicationTable,
-    PitagorasHouseTextTasks
-
+    MathTextTask
 }
 
 public enum Language
