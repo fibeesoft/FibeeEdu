@@ -3493,7 +3493,6 @@ GameObject:
   - component: {fileID: 3317491107114775912}
   - component: {fileID: 3317491107114775913}
   - component: {fileID: 1820622431}
-  - component: {fileID: 4523012336018482292}
   m_Layer: 5
   m_Name: ClassPickContainer
   m_TagString: Untagged
@@ -3578,18 +3577,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4523012336018482292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3317491107114775915}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c39897649c31e9b488c7c372c6aae723, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3317491107557543693
 GameObject:
   m_ObjectHideFlags: 0
@@ -4392,7 +4379,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 636470383048585918}
   - {fileID: 6381866652121324877}
   - {fileID: 3328364157426481695}
   m_Father: {fileID: 0}
@@ -4424,7 +4410,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   txtPoints: {fileID: 4991440830107720603}
   txtClass: {fileID: 4991440830987738882}
-  txtResultMessage: {fileID: 982992360}
 --- !u!114 &2070054935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4483,6 +4468,7 @@ MonoBehaviour:
   btnBack: {fileID: 3596322226531109124}
   classPickContainer: {fileID: 3317491107114775915}
   txtAnswerMessage: {fileID: 982992360}
+  txtResultMessage: {fileID: 0}
 --- !u!1 &6993757713568628172
 GameObject:
   m_ObjectHideFlags: 0
@@ -4519,7 +4505,7 @@ RectTransform:
   - {fileID: 982992359}
   - {fileID: 1945655214}
   m_Father: {fileID: 4832635202750250771}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4586,50 +4572,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1 &8100864615972294972
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 636470383048585918}
-  - component: {fileID: 7526332735957587871}
-  m_Layer: 0
-  m_Name: LevelManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &636470383048585918
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8100864615972294972}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4832635202750250771}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7526332735957587871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8100864615972294972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b6d7b9ff5834fc44b44070fc2eb2c02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  btnBack: {fileID: 3596322226531109124}
 --- !u!1 &8453171540700222975
 GameObject:
   m_ObjectHideFlags: 0
@@ -4660,7 +4602,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4832635202750250771}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1518013847921720158
 MonoBehaviour:

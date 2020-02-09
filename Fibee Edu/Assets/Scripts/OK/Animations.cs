@@ -11,6 +11,7 @@ public class Animations : MonoBehaviour
     [SerializeField] Button btnBack;
     [SerializeField] GameObject classPickContainer;
     [SerializeField] TextMeshProUGUI txtAnswerMessage;
+    [SerializeField] TextMeshProUGUI  txtResultMessage;
     void Awake()
     {
         if(instance == null)
@@ -81,5 +82,26 @@ public class Animations : MonoBehaviour
             btnCheckAnim.SetTrigger("buttonBadAnswer");
             }
 
+    }
+
+    public void DisplayResultMessage(bool b)
+    {
+        txtResultMessage.gameObject.SetActive(true);
+        if (b)
+        {
+            txtResultMessage.text = "WELL DONE!";
+            txtResultMessage.color = Color.green;
+        }
+        else
+        {
+            txtResultMessage.text = "TRY AGAIN!";
+            txtResultMessage.color = Color.red;
+        }
+        StartCoroutine(AfterCheck());
+    }
+    IEnumerator AfterCheck()
+    {
+        yield return new WaitForSeconds(1f);
+        txtResultMessage.gameObject.SetActive(false);
     }
 }

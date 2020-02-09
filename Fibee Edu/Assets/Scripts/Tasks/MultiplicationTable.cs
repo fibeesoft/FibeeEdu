@@ -48,27 +48,23 @@ public class MultiplicationTable : MonoBehaviour
     {
         if(inpAnswer.text.Trim() == result.ToString())
         {
-            GameManager.instance.DisplayResultMessage(true);
+            Animations.instance.DisplayResultMessage(true);
             ChangeCheckButtonColor(Color.green);
             GameManager.instance.AddPoints(1);
-            GameManager.instance.ActivateCheckButton(true);
+            Animations.instance.AnimateCheckButton(true);
             CreateExpression();
             
         }
         else
         {
-            GameManager.instance.DisplayResultMessage(false);
+            Animations.instance.DisplayResultMessage(false);
             ChangeCheckButtonColor(Color.red);
             inpAnswer.ActivateInputField();
-            GameManager.instance.ActivateCheckButton(false);
+            Animations.instance.AnimateCheckButton(false);
             inpAnswer.text = "";
         }
         StartCoroutine(WaitAndChangeButtonColor());
 
-    }
-    void Update()
-    {
-        
     }
 
     IEnumerator WaitAndChangeButtonColor()

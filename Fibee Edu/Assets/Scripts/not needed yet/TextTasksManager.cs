@@ -31,13 +31,13 @@ public class TextTasksManager : MonoBehaviour
     {
         if(inpAnswer.text.ToLower().Trim() == goodAnswer)
         {
-            GameManager.instance.DisplayResultMessage(true);
+           
             GameManager.instance.AddPoints(1);
            
         }
         else
         {
-            GameManager.instance.DisplayResultMessage(false);
+            
             inpAnswer.text = "";
             inpAnswer.ActivateInputField();
         }

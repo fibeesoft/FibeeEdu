@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     [SerializeField] TextMeshProUGUI txtPoints;
-    [SerializeField] TextMeshProUGUI txtClass, txtResultMessage;
+    [SerializeField] TextMeshProUGUI txtClass;
 
 
     public int Points { get; set;}
@@ -64,43 +64,7 @@ public class GameManager : MonoBehaviour
         TasksExplanation.instance.ActivateTaskExplanationButton();
     }
 
-    public void DisplayResultMessage(bool b)
-    {
-        txtResultMessage.gameObject.SetActive(true);
-        if (b)
-        {
-            txtResultMessage.text = "WELL DONE!";
-            txtResultMessage.color = Color.green;
-        }
-        else
-        {
-            txtResultMessage.text = "TRY AGAIN!";
-            txtResultMessage.color = Color.red;
-        }
-        StartCoroutine(AfterCheck());
-    }
-    IEnumerator AfterCheck()
-    {
-        yield return new WaitForSeconds(1f);
-        txtResultMessage.gameObject.SetActive(false);
-    }
 
-    public void ActivateCheckButton(bool isAnswerCorrect)
-    {
-        GameObject checkButtonAnim;
-        checkButtonAnim = GameObject.FindGameObjectWithTag("CheckButton");
-        if (checkButtonAnim != null)
-        {
-            if (isAnswerCorrect)
-            {
-                checkButtonAnim.GetComponent<Animator>().SetTrigger("buttonGoodAnswer");
-            }
-            else
-            {
-                checkButtonAnim.GetComponent<Animator>().SetTrigger("buttonBadAnswer");
-            }
-        }
-    }
 
 
 }

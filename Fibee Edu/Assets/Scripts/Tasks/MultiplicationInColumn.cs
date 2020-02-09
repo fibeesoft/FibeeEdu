@@ -53,11 +53,14 @@ public class MultiplicationInColumn : MonoBehaviour
     void Success()
     {
         Animations.instance.AnimateCheckButton(true);
+        Animations.instance.DisplayResultMessage(true);
+        GameManager.instance.AddPoints(1);
         CreateTask();
     }
     void Fail()
     {
         Animations.instance.AnimateCheckButton(false);
+        Animations.instance.DisplayResultMessage(false);
         inpAnswer.text = "";
     }
     void GenerateRandomNumbers()
