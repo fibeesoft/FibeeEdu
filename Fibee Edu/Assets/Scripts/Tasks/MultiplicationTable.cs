@@ -22,6 +22,13 @@ public class MultiplicationTable : MonoBehaviour
 
     }
 
+
+
+    public string Solution()
+    {
+        return result.ToString();
+    }
+
     void CreateExpression()
     {
         maxValue = (int)sliderMaxValue.value;
@@ -31,7 +38,7 @@ public class MultiplicationTable : MonoBehaviour
         txtExpression.text = $"{num1} x {num2} = ";
         inpAnswer.ActivateInputField();
         inpAnswer.text = "";
-        
+        MainUI.instance.SetSolution(Solution());
     }
 
     public void DisplayMaxValue()
@@ -46,7 +53,7 @@ public class MultiplicationTable : MonoBehaviour
 
     public void CheckAnswer()
     {
-        if(inpAnswer.text.Trim() == result.ToString())
+        if(inpAnswer.text.Trim() == Solution())
         {
             Animations.instance.DisplayResultMessage(true);
             ChangeCheckButtonColor(Color.green);

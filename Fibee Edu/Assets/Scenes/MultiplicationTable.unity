@@ -684,7 +684,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1674612451}
+      - m_Target: {fileID: 0}
         m_MethodName: DisplayMaxValue
         m_Mode: 1
         m_Arguments:
@@ -1177,7 +1177,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1674612451}
+      objectReference: {fileID: 2030668291}
     - target: {fileID: 7721072458086262477, guid: f0d5e48a1f9515d4b868e2b566e8993d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1523,7 +1523,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1674612450}
-  - component: {fileID: 1674612451}
   m_Layer: 5
   m_Name: MultiplicationTableContainer
   m_TagString: Untagged
@@ -1556,24 +1555,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1674612451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674612449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 384e0f71f443f494e9569a3ca9814abe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  txtExpression: {fileID: 1214363633}
-  txtMessage: {fileID: 872783947}
-  inpAnswer: {fileID: 507500675}
-  buttonCheck: {fileID: 0}
-  sliderMaxValue: {fileID: 442268481}
-  txtMaxValue: {fileID: 319735738}
 --- !u!1 &1970434285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,6 +1628,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970434285}
   m_CullTransparentMesh: 0
+--- !u!1 &2030668290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2030668293}
+  - component: {fileID: 2030668292}
+  - component: {fileID: 2030668291}
+  m_Layer: 0
+  m_Name: MultiplicationTable
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2030668291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030668290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384e0f71f443f494e9569a3ca9814abe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  txtExpression: {fileID: 1214363633}
+  txtMessage: {fileID: 872783947}
+  inpAnswer: {fileID: 507500675}
+  sliderMaxValue: {fileID: 442268481}
+  txtMaxValue: {fileID: 319735738}
+--- !u!114 &2030668292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030668290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a158168c3afef34a82dc89f52729e89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &2030668293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030668290}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 702.88226, y: 316.48737, z: -453.28253}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2127401730
 GameObject:
   m_ObjectHideFlags: 0

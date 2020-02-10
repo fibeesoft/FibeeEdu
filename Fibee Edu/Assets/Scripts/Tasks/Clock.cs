@@ -15,6 +15,7 @@ public class Clock : MonoBehaviour
     int generatedHour, generatedMinute;
     void Start()
     {
+        
         CreateTask();
     }
 

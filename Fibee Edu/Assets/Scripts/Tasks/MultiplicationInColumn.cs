@@ -36,11 +36,16 @@ public class MultiplicationInColumn : MonoBehaviour
     {
         GenerateRandomNumbers();
         UpdateTextFields();
+        MainUI.instance.SetSolution(Solution());
     }
 
+    public string Solution()
+    {
+        return (num1 * num2).ToString();
+    }
     public void Check()
     {
-        if(inpAnswer.text == (num1 * num2).ToString())
+        if(inpAnswer.text == Solution())
         {
             Success();
         }

@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI txtPoints;
     [SerializeField] TextMeshProUGUI txtClass;
 
-
-    public int Points { get; set;}
+    int points;
+    public int Points { get { return points; } set { points = value; DisplayPoints(); } }
 
     public Tasks CurrentTask { get; set; }
     private void Awake()
