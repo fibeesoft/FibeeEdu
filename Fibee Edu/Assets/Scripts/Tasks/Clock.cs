@@ -15,9 +15,12 @@ public class Clock : MonoBehaviour
     int generatedHour, generatedMinute;
     void Start()
     {
-        
+        MainUI.instance.SetExplanation("This task comes in two options to choose from. We can either read the analog clock, use sliders to set the value on the digital clock or we can read the values and try to set the analog clock by sliding the sliders." +
+            "\n We can choose READ, SET or RANDOM option. Once we set the analog or digital clock we can press the Check Button. If the answer is correct, new task will be generated automatically.");
+        ;
         CreateTask();
     }
+
 
     void CalculateRandomTime()
     {

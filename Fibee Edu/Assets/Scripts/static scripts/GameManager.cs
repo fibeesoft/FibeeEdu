@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     int points;
     public int Points { get { return points; } set { points = value; DisplayPoints(); } }
 
-    public Tasks CurrentTask { get; set; }
     private void Awake()
     {
         if(instance == null)
@@ -29,16 +28,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
-        DisplayPoints();
-
-        
-    }
-
-    private void Update()
-    {
       
+        DisplayPoints(); 
     }
+
     void DisplayPoints()
     {
         txtPoints.text = "POINTS: " + Points.ToString();
@@ -50,21 +43,5 @@ public class GameManager : MonoBehaviour
         DisplayPoints();
         SaveProgress.instance.SaveData();
     }
-
-
-
-
-
-
-
-
-    public void SwitchTask(Tasks t)
-    {
-        CurrentTask = t;
-        TasksExplanation.instance.ActivateTaskExplanationButton();
-    }
-
-
-
 
 }

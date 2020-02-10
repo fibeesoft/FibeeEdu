@@ -14,7 +14,6 @@ public class MultiplicationTable : MonoBehaviour
     int num1, num2, result, maxValue;
     void Start()
     {
-        GameManager.instance.SwitchTask(Tasks.MultiplicationTable);
         CreateExpression();
     }
 

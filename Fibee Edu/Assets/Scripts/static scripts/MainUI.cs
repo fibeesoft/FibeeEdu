@@ -8,16 +8,43 @@ using UnityEngine.SceneManagement;
 public class MainUI : MonoBehaviour
 {
     public static MainUI instance;
-    [SerializeField] Button btnBack, btnClassPick, btnSolution, btnExplanation;
-    [SerializeField] GameObject classPickContainer, solutionPanel,explanationPanel;
+    [SerializeField] Button btnBack, btnClassPick, btnSolution, btnExplanation, btnUser;
+    [SerializeField] GameObject classPickContainer, solutionPanel, explanationPanel;
     [SerializeField] TextMeshProUGUI txtClass;
-    [SerializeField] Text txtSolution;
+    [SerializeField] Text txtSolution, txtExplanation;
     int classSelected;
+    string solutionText, explanationText;
     public void SetSolution(string txt)
     {
+        solutionText = txt;
         txtSolution.text = txt;
     }
- 
+    
+    public void SetExplanation(string txt)
+    {
+        explanationText = txt;
+        txtExplanation.text = txt;
+    }
+
+    public void ActivateUserButton(bool b)
+    {
+        btnUser.interactable = b;
+    }
+    public void ActivateTaskSpecificButtons(bool b)
+    {
+        if (b)
+        {
+            btnSolution.interactable = true;
+            btnExplanation.interactable = true;
+        }
+        else
+        {
+            btnSolution.interactable = false;
+            btnExplanation.interactable = false;
+        }
+    }
+
+
     private void Awake()
     {
         if (instance == null)
