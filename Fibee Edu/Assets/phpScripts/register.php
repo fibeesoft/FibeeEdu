@@ -5,21 +5,13 @@ $username_p = $_POST["username"];
 $password_p = $_POST["password"];
 $email_p = $_POST["email"];
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// prepare and bind
 $stmt = $conn->prepare("INSERT INTO Users (username, pass, email) VALUES (?, ?, ?)");
 $stmt->bind_param("sss", $username_p, $password_p, $email_p);
 
 $stmt->execute();
 
-echo "New records created successfully";
+echo "New user created";
 
 $stmt->close();
 $conn->close();

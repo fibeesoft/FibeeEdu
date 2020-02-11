@@ -72,8 +72,6 @@ public class UserManager : MonoBehaviour
             }
             else
             {
-                //print(www.downloadHandler.text);
-                
                 if(www.downloadHandler.text != "Fail")
                 {
                     isLoggedIn = true;
@@ -87,7 +85,6 @@ public class UserManager : MonoBehaviour
                     {
                         print(p);
                     }
-
                     int points = System.Convert.ToInt32( userInfo[1]);
                     GameManager.instance.Points = points;
                 }
@@ -97,8 +94,7 @@ public class UserManager : MonoBehaviour
                     MainUI.instance.ActivateUserButton(false);
                     print(www.downloadHandler.text);
                     ResetInputFields();
-                }
-                
+                } 
             }
         }
     }
@@ -131,12 +127,10 @@ public class UserManager : MonoBehaviour
                 }
                 else
                 {
-                    print(www.downloadHandler.text);
-                   
+                    print(www.downloadHandler.text); 
                 }
             }
         }
-
     }
 
     public void UpdatePoints()
@@ -153,8 +147,6 @@ public class UserManager : MonoBehaviour
         using (UnityWebRequest www = UnityWebRequest.Post(url, form))
         {
             yield return www.SendWebRequest();
-       
-
             if (www.isNetworkError || www.isHttpError)
             {
                 print(www.error);
@@ -162,7 +154,6 @@ public class UserManager : MonoBehaviour
             else
             {
                print( www.downloadHandler.text);
-     
             }
         }
     }
