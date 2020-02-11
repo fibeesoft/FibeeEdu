@@ -41,7 +41,11 @@ public class GameManager : MonoBehaviour
     {
         Points += point;
         DisplayPoints();
-        SaveProgress.instance.SaveData();
+        if (UserManager.instance.IsLoggedIn)
+        {
+            UserManager.instance.UpdatePoints();
+        }
+        //SaveProgress.instance.SaveData();
     }
 
 }

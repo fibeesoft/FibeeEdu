@@ -72,12 +72,24 @@ public class UserManager : MonoBehaviour
             }
             else
             {
-                if(www.downloadHandler.text == "Log")
+                //print(www.downloadHandler.text);
+                
+                if(www.downloadHandler.text != "Fail")
                 {
                     isLoggedIn = true;
                     print(www.downloadHandler.text);
                     OpenLoginPanel(false);
                     MainUI.instance.ActivateUserButton(true);
+
+                    string[] userInfo = www.downloadHandler.text.Split('|');
+
+                    foreach (string p in userInfo)
+                    {
+                        print(p);
+                    }
+
+                    int points = System.Convert.ToInt32( userInfo[1]);
+                    GameManager.instance.Points = points;
                 }
                 else
                 {
@@ -86,6 +98,7 @@ public class UserManager : MonoBehaviour
                     print(www.downloadHandler.text);
                     ResetInputFields();
                 }
+                
             }
         }
     }
@@ -124,5 +137,33 @@ public class UserManager : MonoBehaviour
             }
         }
 
+    }
+
+    public void UpdatePoints()
+    {
+        StartCoroutine(UpdatePointsCor());
+    }
+
+    IEnumerator UpdatePointsCor()
+    {
+        string url = "www.pikademia.pl/apps/updatePoints.php";
+        WWWForm form = new WWWForm();
+        form.AddField("username", username);
+        form.AddField("points", GameManager.instance.Points);
+        using (UnityWebRequest www = UnityWebRequest.Post(url, form))
+        {
+            yield return www.SendWebRequest();
+       
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                print(www.error);
+            }
+            else
+            {
+               print( www.downloadHandler.text);
+     
+            }
+        }
     }
 }
