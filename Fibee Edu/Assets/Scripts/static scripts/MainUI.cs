@@ -8,11 +8,9 @@ using UnityEngine.SceneManagement;
 public class MainUI : MonoBehaviour
 {
     public static MainUI instance;
-    [SerializeField] Button btnBack, btnClassPick, btnSolution, btnExplanation, btnUser;
-    [SerializeField] GameObject classPickContainer, solutionPanel, explanationPanel;
-    [SerializeField] TextMeshProUGUI txtClass;
+    [SerializeField] Button btnBack, btnSolution, btnExplanation, btnUser;
+    [SerializeField] GameObject solutionPanel, explanationPanel;
     [SerializeField] Text txtSolution, txtExplanation;
-    int classSelected;
     string solutionText, explanationText;
     public void SetSolution(string txt)
     {
@@ -58,33 +56,10 @@ public class MainUI : MonoBehaviour
     }
     void Start()
     {
-        btnClassPick.onClick.AddListener(delegate {
-            StartCoroutine(ShowClassPickContainerCor());
 
-        });
         btnBack.onClick.AddListener(delegate { StartCoroutine(LoadMainScene()); });
     }
-    /// <summary>
-    /// classPickContainer
-    /// </summary>
-    public void ShowClassPickContainer()
-    {
-        StartCoroutine(ShowClassPickContainerCor());
-    }
-    IEnumerator ShowClassPickContainerCor()
-    {
-        if (classPickContainer.activeSelf && classSelected != 0)
-        {
-            Animations.instance.AnimateClassPickContainer(false);
-            yield return new WaitForSeconds(1.3f);
-            classPickContainer.SetActive(false);
-        }
-        else
-        {
-            classPickContainer.SetActive(true);
-            Animations.instance.AnimateClassPickContainer(true);
-        }
-    }
+
 
     public void ShowSolutionContainer(string txt)
     {
@@ -109,19 +84,6 @@ public class MainUI : MonoBehaviour
         }
     }
 
-    public void SetClass(int c)
-    {
-        classSelected = c;
-        txtClass.text = classSelected.ToString();
-        CheckIfClassWasSelected();
-        SaveProgress.instance.SaveData();
-    }
-
-    public int GetClass()
-    {
-        return classSelected;
-    }
-
     IEnumerator LoadMainScene()
     {
         yield return new WaitForSeconds(0.3f);
@@ -135,39 +97,4 @@ public class MainUI : MonoBehaviour
         }
     }
 
-    public void DisplaySetClassContainer()
-    {
-        if (classPickContainer.activeSelf)
-        {
-            if (classSelected != 0)
-            {
-                classPickContainer.SetActive(false);
-            }
-            else
-            {
-                Animations.instance.AnimateClassPickContainer(true);
-            }
-
-        }
-        else
-        {
-            classPickContainer.SetActive(true);
-            Animations.instance.AnimateClassPickContainer(true);
-
-        }
-    }
-
-    void CheckIfClassWasSelected()
-    {
-
-        if(classSelected == 0)
-        {
-            ShowClassPickContainer();
-        }
-        else
-        {
-            return;
-        }
-    }
-
-}
+ }

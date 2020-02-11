@@ -9,7 +9,6 @@ public class Animations : MonoBehaviour
 {
     public static Animations instance;
     [SerializeField] Button btnBack;
-    [SerializeField] GameObject classPickContainer;
     [SerializeField] TextMeshProUGUI txtAnswerMessage;
     [SerializeField] TextMeshProUGUI  txtResultMessage;
     void Awake()
@@ -28,22 +27,6 @@ public class Animations : MonoBehaviour
     public void AnimBtnBack()
     {
         btnBack.GetComponent<Animator>().SetTrigger("StartAnim");
-    }
-
-    public void AnimateClassPickContainer(bool isSwitchingOn)
-    {
-   
-        Animator anim = classPickContainer.GetComponent<Animator>();
-        if (!isSwitchingOn)
-        {
-            anim.SetTrigger("EndAnim");
-
-        }
-        else
-        {
-            anim.SetTrigger("StartAnim");
-        }
-
     }
 
 
