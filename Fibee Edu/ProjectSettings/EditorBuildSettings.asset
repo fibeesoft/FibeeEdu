@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dividing.unity
     guid: f9282d3712bf1bc41b6c3e6b2b063a03
+  - enabled: 1
+    path: Assets/Scenes/TextTask.unity
+    guid: e4bc85bf4756f9148ba221208cfd5c7b
   m_configObjects: {}
