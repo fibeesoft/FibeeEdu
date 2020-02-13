@@ -338,7 +338,7 @@ MonoBehaviour:
   btnExplanation: {fileID: 6543943446617242033}
   btnUser: {fileID: 6543943446194716431}
   solutionPanel: {fileID: 5662235295114828327}
-  explanationPanel: {fileID: 6543943446100826903}
+  infoPanel: {fileID: 6543943446100826903}
   txtSolution: {fileID: 8672028764879680527}
   txtExplanation: {fileID: 707576218689972707}
 --- !u!114 &8299069651888131207
@@ -1560,16 +1560,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1595756275775560920}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 6543943447475279735}
+        m_MethodName: ShowInfoPanel
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &6543943447780316763
 GameObject:
@@ -2278,7 +2278,7 @@ PrefabInstance:
     - target: {fileID: 2575377671081764715, guid: 06d5c2fe1edaf6a47b380749d2b5583e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2575377671081764715, guid: 06d5c2fe1edaf6a47b380749d2b5583e,
         type: 3}
@@ -2289,11 +2289,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 6543943446699514794}
+      objectReference: {fileID: 6543943447475279735}
     - target: {fileID: 2575377671081764715, guid: 06d5c2fe1edaf6a47b380749d2b5583e,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ShowTaskExplanation
+      value: ShowInfoPanel
       objectReference: {fileID: 0}
     - target: {fileID: 2575377671081764715, guid: 06d5c2fe1edaf6a47b380749d2b5583e,
         type: 3}

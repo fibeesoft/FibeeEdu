@@ -21,6 +21,7 @@ public class TextTask : MonoBehaviour
 
     private void Start()
     {
+        MainUI.instance.SetExplanation("Solve text tasks and provide clear answer in the input box. All answers should be provided as pure numbers or single word.");
         StartCoroutine(GetTextTasks());
         
     }

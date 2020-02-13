@@ -9,7 +9,7 @@ public class MainUI : MonoBehaviour
 {
     public static MainUI instance;
     [SerializeField] Button btnBack, btnSolution, btnExplanation, btnUser;
-    [SerializeField] GameObject solutionPanel, explanationPanel;
+    [SerializeField] GameObject solutionPanel, infoPanel;
     [SerializeField] Text txtSolution, txtExplanation;
     string solutionText, explanationText;
     public void SetSolution(string txt)
@@ -60,6 +60,10 @@ public class MainUI : MonoBehaviour
         btnBack.onClick.AddListener(delegate { StartCoroutine(LoadMainScene()); });
     }
 
+    public void ShowInfoPanel(bool b)
+    {
+        infoPanel.SetActive(b);
+    }
 
     public void ShowSolutionContainer(string txt)
     {
