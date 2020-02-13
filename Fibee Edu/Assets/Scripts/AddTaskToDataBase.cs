@@ -8,10 +8,8 @@ public class AddTaskToDataBase : MonoBehaviour
 {
     [SerializeField] InputField inpQuestion;
     [SerializeField] InputField inpAnswer;
-    [SerializeField] InputField inpHelp;
     [SerializeField] InputField inpSolution;
     [SerializeField] Dropdown dropClass;
-    [SerializeField] Dropdown dropCategory;
 
     public void PushToServer()
     {
@@ -20,20 +18,16 @@ public class AddTaskToDataBase : MonoBehaviour
 
     IEnumerator UploadToServer()
     {
-        string url = "www.pikademia.pl/apps/insert_task.php";
+        string url = "www.fibeesoft.com/projects/phicademia/db/addtexttask.php";
         string question = inpQuestion.text;
         string answer = inpAnswer.text;
         string classPick = dropClass.value.ToString();
-        string subject = dropCategory.value.ToString();
-        string help = inpHelp.text;
         string solution = inpSolution.text;
         WWWForm form = new WWWForm();
-        form.AddField("_questionPost", question);
-        form.AddField("_answerPost", answer);
-        form.AddField("_classPickPost", classPick);
-        form.AddField("_subject", subject);
-        form.AddField("_help", help);
-        form.AddField("_solution", solution);
+        form.AddField("question", question);
+        form.AddField("answer", answer);
+        form.AddField("class", classPick);
+        form.AddField("solution", solution);
 
         using (UnityWebRequest www = UnityWebRequest.Post(url, form))
         {
@@ -52,5 +46,7 @@ public class AddTaskToDataBase : MonoBehaviour
 
         inpAnswer.text = "";
         inpQuestion.text = "";
+        inpSolution.text = "";
+        dropClass.value = 0;
     }
 }

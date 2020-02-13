@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TextTask.unity
     guid: e4bc85bf4756f9148ba221208cfd5c7b
+  - enabled: 1
+    path: Assets/Scenes/AddTasksToDB.unity
+    guid: 590d1fc015179f34db671e7f2718d2c4
   m_configObjects: {}

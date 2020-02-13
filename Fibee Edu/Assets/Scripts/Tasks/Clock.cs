@@ -64,19 +64,34 @@ public class Clock : MonoBehaviour
     {
         if (isReadOn)
         {
-            txtHourDigital.text = sliderHour.value.ToString("00");
+            if(sliderHour.value == 0)
+            {
+                txtHourDigital.text = (sliderHour.value + 12).ToString("00");
+
+            }
+            else
+            {
+                txtHourDigital.text = sliderHour.value.ToString("00");
+            }
             txtMinuteDigital.text = sliderMinute.value.ToString("00");
         }
         else
         {
-            txtHourDigital.text = generatedHour.ToString("00");
+            if(generatedHour == 0)
+            {
+                txtHourDigital.text = (generatedHour + 12).ToString("00");
+            }
+            else
+            {
+                txtHourDigital.text = generatedHour.ToString("00");
+            }
             txtMinuteDigital.text = generatedMinute.ToString("00");
         }
     }
 
     public void Check()
     {
-        if (sliderHour.value == generatedHour)
+        if (sliderHour.value == generatedHour && sliderMinute.value == generatedMinute)
         {
             Success();
         }

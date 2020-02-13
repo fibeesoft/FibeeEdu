@@ -11,7 +11,7 @@ public class TextTask : MonoBehaviour
     //
     [SerializeField] Text txtTextTask;
     [SerializeField] InputField inpAnswer;
-    int textTaskNumber = 1;
+    int textTaskNumber = 0;
     int allTasksQuantity;
     string [] tasksArray;
     string[] task;
@@ -58,6 +58,7 @@ public class TextTask : MonoBehaviour
             txtTextTask.text = task[0];
             answer = task[1];
             solution = task[3];
+            MainUI.instance.SetSolution(solution);
             print(answer);
         }
         else

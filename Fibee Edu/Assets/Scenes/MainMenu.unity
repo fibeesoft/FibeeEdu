@@ -838,12 +838,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0d5e48a1f9515d4b868e2b566e8993d, type: 3}
---- !u!1 &833340255 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1595756275775560920, guid: dcc91c220f6348a4fb898f604f409f41,
-    type: 3}
-  m_PrefabInstance: {fileID: 8420281533241939890}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &860020236
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,7 +1680,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1625570989}
   m_OnClick:
     m_PersistentCalls:
@@ -2202,8 +2196,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3317491105949305567}
   m_TextComponent: {fileID: 3317491106611421394}
   m_Placeholder: {fileID: 3317491107330418283}
-  m_ContentType: 0
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
   m_KeyboardType: 0
   m_LineType: 0
@@ -3980,26 +3974,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6543943446617242033, guid: dcc91c220f6348a4fb898f604f409f41,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6543943446617242033, guid: dcc91c220f6348a4fb898f604f409f41,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 833340255}
-    - target: {fileID: 6543943446617242033, guid: dcc91c220f6348a4fb898f604f409f41,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6543943446617242033, guid: dcc91c220f6348a4fb898f604f409f41,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dcc91c220f6348a4fb898f604f409f41, type: 3}
