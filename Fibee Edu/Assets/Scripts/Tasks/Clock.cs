@@ -41,19 +41,28 @@ public class Clock : MonoBehaviour
 
         generatedHour = Random.Range(0, maxValue);
         generatedMinute = Random.Range(0, 60);
-        
-        sliderHour.maxValue = maxValue - 1;
+        if (!isReadOn && is24hourOn)
+        {
+            sliderHour.maxValue = maxValue - 13;
+        }
+        else
+        {
+            sliderHour.maxValue = maxValue - 1;
+
+        }
         sliderMinute.maxValue = 59;
     }
 
     public void SetTheAnalogClock()
     {
+        DebugTime();
         if (isReadOn)
         {
-            float minuteAngle = -generatedMinute * 6;
-            float hourAngle = -generatedHour * 30 - generatedMinute/2;
-            minuteHandler.transform.localEulerAngles = new Vector3(0f, 0f, minuteAngle);
-            hourHandler.transform.localEulerAngles = new Vector3(0f, 0f, hourAngle);
+
+                float minuteAngle = -generatedMinute * 6;
+                float hourAngle = -generatedHour * 30 - generatedMinute / 2;
+                minuteHandler.transform.localEulerAngles = new Vector3(0f, 0f, minuteAngle);
+                hourHandler.transform.localEulerAngles = new Vector3(0f, 0f, hourAngle);
 
         }
         else
@@ -62,11 +71,13 @@ public class Clock : MonoBehaviour
             float hourAngle = -sliderHour.value * 30 - sliderMinute.value / 2;
             minuteHandler.transform.localEulerAngles = new Vector3(0f, 0f, minuteAngle);
             hourHandler.transform.localEulerAngles = new Vector3(0f, 0f, hourAngle);
+
         }
     }
 
     public void SetTheDigitalClock()
     {
+        DebugTime();
         if (isReadOn)
         {
 
@@ -123,14 +134,29 @@ public class Clock : MonoBehaviour
 
     public void Check()
     {
-        if (sliderHour.value == generatedHour && sliderMinute.value == generatedMinute)
+        if(is24hourOn && !isReadOn && generatedHour >= 12)
         {
-            Success();
+            if ((sliderHour.value + 12) == generatedHour && sliderMinute.value == generatedMinute)
+            {
+                Success();
+            }
+            else
+            {
+                Fail();
+            }
         }
         else
         {
-            Fail();
+            if (sliderHour.value == generatedHour && sliderMinute.value == generatedMinute)
+            {
+                Success();
+            }
+            else
+            {
+                Fail();
+            }
         }
+
     }
 
     void Success()
@@ -150,28 +176,18 @@ public class Clock : MonoBehaviour
 
     void SetTheOption()
     {
-        if(slider1224.value == 0)
-        {
-            is24hourOn = false;
-            imgDayOrNight.gameObject.SetActive(false);
-        }
-        else
-        {
-            is24hourOn = true;
-            imgDayOrNight.gameObject.SetActive(true);
-        }
-        if(sliderOptions.value == 0)
+        if (sliderOptions.value == 0)
         {
             isReadOn = true;
         }
-        else if(sliderOptions.value == 1)
+        else if (sliderOptions.value == 1)
         {
             isReadOn = false;
         }
         else
         {
             int rand = Random.Range(0, 2);
-            if(rand == 0)
+            if (rand == 0)
             {
                 isReadOn = true;
             }
@@ -180,6 +196,25 @@ public class Clock : MonoBehaviour
                 isReadOn = false;
             }
         }
+        if (slider1224.value == 0)
+        {
+            is24hourOn = false;
+            imgDayOrNight.gameObject.SetActive(false);
+        }
+        else
+        {
+            is24hourOn = true;
+            if (isReadOn)
+            {
+                imgDayOrNight.gameObject.SetActive(true);
+
+            }
+            else
+            {
+                imgDayOrNight.gameObject.SetActive(false);
+            }
+        }
+
     }
 
     public void CreateTask()
@@ -191,7 +226,11 @@ public class Clock : MonoBehaviour
         SetTheDigitalClock();
         MainUI.instance.SetSolution(generatedHour + " : " + generatedMinute);
     }
-
+    void DebugTime()
+    {
+        print("gTime: " + generatedHour + " : " + generatedMinute);
+        print("setTime: " + sliderHour.value + " : " + sliderMinute.value);
+    }
     void ResetAllValues()
     {
         sliderHour.value = 0;

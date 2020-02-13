@@ -129,6 +129,7 @@ public class MenuManager : MonoBehaviour
     public void QuitTheGame()
     {
         Application.Quit();
+        print("quit");
     }
 
 }
