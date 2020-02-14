@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public int Points { get { return points; } set { points = value; DisplayPoints(); } }
     string username;
     public string Username { get { return username; } set { username = value; DisplayUsername(); } }
+    int classNumber;
+    public int ClassNumber { get { return classNumber; } set { classNumber = value; } }
+
     private void Awake()
     {
         if(instance == null)

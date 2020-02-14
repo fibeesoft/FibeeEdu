@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
@@ -10,13 +11,43 @@ public class MenuManager : MonoBehaviour
     [SerializeField] GameObject LoginPanel, RegisterPanel;
     [SerializeField] InputField inpLoginUsername, inpLoginPassword;
     [SerializeField] InputField inpRegUsername, inpRegPassword, inpRegEmail;
+    [SerializeField] Slider sliderClass;
+    [SerializeField] TextMeshProUGUI txtClass;
     string username;
+    int classRoomSelected;
+
+    
     void Start()
 	{
         LoginPanel.SetActive(false);
         btnStartGame.onClick.AddListener(delegate { SceneChanger.instance.LoadScene((int)Scenes.Game); });
+        if(GameManager.instance.ClassNumber != 0)
+        {
+            classRoomSelected = GameManager.instance.ClassNumber;
+            sliderClass.value = classRoomSelected;
+            txtClass.text = "CLASS [" + classRoomSelected + "]";
+        }
+        else
+        {
+            classRoomSelected = 0;
+            txtClass.text = "PICK THE CLASS";
+        }
 	}
 
+    public void SetClassRoom()
+    {
+        classRoomSelected = (int)sliderClass.value;
+        if(classRoomSelected == 0)
+        {
+            txtClass.text = "PICK THE CLASS";
+        }
+        else
+        {
+            txtClass.text = "CLASS [" + classRoomSelected + "]";
+            GameManager.instance.ClassNumber = classRoomSelected;
+        }
+
+    }
     public void OpenLoginPanel(bool b)
     {
         ResetInputFields();

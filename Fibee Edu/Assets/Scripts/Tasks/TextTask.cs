@@ -11,23 +11,29 @@ public class TextTask : MonoBehaviour
     //
     [SerializeField] Text txtTextTask;
     [SerializeField] InputField inpAnswer;
-    int textTaskNumber = 0;
+    [SerializeField] Slider sliderRandOption;
+    int textTaskNumber = 0, lastTaskNumber = 0;
     int allTasksQuantity;
     string [] tasksArray;
     string[] task;
     string answer;
     string solution;
+    bool isRandomOn;
     string url = "www.fibeesoft.com/projects/phicademia/db/texttask.php";
 
     private void Start()
     {
         MainUI.instance.SetExplanation("Solve text tasks and provide clear answer in the input box. All answers should be provided as pure numbers or single word.");
-        StartCoroutine(GetTextTasks());
+        int classNumber = GameManager.instance.ClassNumber;
+        StartCoroutine(GetTextTasks(classNumber));
+        textTaskNumber = lastTaskNumber;
         
     }
-    IEnumerator GetTextTasks()
+    IEnumerator GetTextTasks(int classNumber)
     {
-        using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
+        WWWForm form = new WWWForm();
+        form.AddField("classNumber", classNumber);
+        using (UnityWebRequest webRequest = UnityWebRequest.Post(url,form))
         {
             // Request and wait for the desired page.
             yield return webRequest.SendWebRequest();
@@ -55,12 +61,15 @@ public class TextTask : MonoBehaviour
     {
         if (textTaskNumber < allTasksQuantity)
         {
+            SetRandomOption();
+            ChooseNextTaskNumber();
             task = tasksArray[textTaskNumber].Split('|');
             txtTextTask.text = task[0];
             answer = task[1];
             solution = task[3];
             MainUI.instance.SetSolution(solution);
             print(answer);
+
         }
         else
         {
@@ -73,10 +82,15 @@ public class TextTask : MonoBehaviour
     {
         if(inpAnswer.text == answer)
         {
+            if (!isRandomOn)
+            {
+
+                lastTaskNumber++;
+                textTaskNumber = lastTaskNumber;
+            }
             inpAnswer.text = "";
             Animations.instance.AnimateCheckButton(true);
             GameManager.instance.AddPoints(2);
-            textTaskNumber++;
             GenerateTask();
         }
         else
@@ -84,6 +98,28 @@ public class TextTask : MonoBehaviour
             Animations.instance.AnimateCheckButton(false);
             inpAnswer.text = "";
         }
+    }
 
+    public void SetRandomOption()
+    {
+        if(sliderRandOption.value == 0)
+        {
+            isRandomOn = false;
+        }
+        else
+        {
+            isRandomOn = true;
+        }
+    }
+    void ChooseNextTaskNumber()
+    {
+        if (isRandomOn)
+        {
+            textTaskNumber = Random.Range(0, allTasksQuantity);
+        }
+        else
+        {
+            textTaskNumber = lastTaskNumber;
+        }
     }
 }
