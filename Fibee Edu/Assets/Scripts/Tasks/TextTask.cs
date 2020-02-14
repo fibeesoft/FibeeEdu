@@ -12,6 +12,7 @@ public class TextTask : MonoBehaviour
     [SerializeField] Text txtTextTask;
     [SerializeField] InputField inpAnswer;
     [SerializeField] Slider sliderRandOption;
+    [SerializeField] RawImage imgTask;
     int textTaskNumber = 0, lastTaskNumber = 0;
     int allTasksQuantity;
     string [] tasksArray;
@@ -19,6 +20,7 @@ public class TextTask : MonoBehaviour
     string answer;
     string solution;
     bool isRandomOn;
+    string imageUrl;
     string url = "www.fibeesoft.com/projects/phicademia/db/texttask.php";
 
     private void Start()
@@ -67,7 +69,18 @@ public class TextTask : MonoBehaviour
             txtTextTask.text = task[0];
             answer = task[1];
             solution = task[3];
-            MainUI.instance.SetSolution(solution);
+            imageUrl = task[4];
+            string imageSolutionUrl = task[5];
+            if(imageUrl.Length > 1)
+            {
+                imgTask.gameObject.SetActive(true);
+                StartCoroutine(SetImage(imageUrl));
+            }
+            else
+            {
+                imgTask.gameObject.SetActive(false);
+            }
+            MainUI.instance.SetSolution(solution, imageSolutionUrl);
             print(answer);
 
         }
@@ -76,6 +89,16 @@ public class TextTask : MonoBehaviour
             txtTextTask.text = "You finished all the tasks. Well done!";
         }
 
+    }
+
+    IEnumerator SetImage(string MediaUrl)
+    {
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(MediaUrl);
+        yield return request.SendWebRequest();
+        if (request.isNetworkError || request.isHttpError)
+            Debug.Log(request.error);
+        else
+            imgTask.texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
     }
 
     public void Check()

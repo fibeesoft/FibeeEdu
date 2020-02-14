@@ -46,6 +46,7 @@ public class MenuManager : MonoBehaviour
             txtClass.text = "CLASS [" + classRoomSelected + "]";
             GameManager.instance.ClassNumber = classRoomSelected;
         }
+        MainUI.instance.SetClassNumberText(classRoomSelected);
 
     }
     public void OpenLoginPanel(bool b)

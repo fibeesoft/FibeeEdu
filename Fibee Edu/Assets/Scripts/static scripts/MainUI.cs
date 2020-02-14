@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 public class MainUI : MonoBehaviour
 {
@@ -11,13 +12,36 @@ public class MainUI : MonoBehaviour
     [SerializeField] Button btnBack, btnSolution, btnExplanation, btnUser;
     [SerializeField] GameObject solutionPanel, infoPanel;
     [SerializeField] Text txtSolution, txtExplanation;
-    string solutionText, explanationText;
+    [SerializeField] RawImage imgSolution;
+    [SerializeField] TextMeshProUGUI txtClassNumber;
+    string solutionText, explanationText, imageSolutionUrl;
+    public void SetSolution(string txt, string imgUrl)
+    {
+        solutionText = txt;
+        txtSolution.text = txt;
+        imageSolutionUrl = imgUrl;
+
+    }
     public void SetSolution(string txt)
     {
         solutionText = txt;
         txtSolution.text = txt;
     }
-    
+
+    public void SetClassNumberText(int classNr)
+    {
+        txtClassNumber.text = classNr.ToString();
+    }
+    IEnumerator SetImage(string MediaUrl)
+    {
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(MediaUrl);
+        yield return request.SendWebRequest();
+        if (request.isNetworkError || request.isHttpError)
+            Debug.Log(request.error);
+        else
+            imgSolution.texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
+    }
+
     public void SetExplanation(string txt)
     {
         explanationText = txt;
@@ -67,6 +91,10 @@ public class MainUI : MonoBehaviour
 
     public void ShowSolutionContainer(string txt)
     {
+        if(imageSolutionUrl != "")
+        {
+            StartCoroutine(SetImage(imageSolutionUrl));
+        }
         if (GameObject.FindObjectOfType<TaskManager>())
         {
             StartCoroutine(ShowSolutionContainerCor(txt));
