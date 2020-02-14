@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     bool isLoggedIn = false;
     public bool IsLoggedIn { get { return isLoggedIn; } set { isLoggedIn = value; } }
     int points;
-    public int Points { get { return points; } set { points = value; DisplayPoints(); } }
+    public int Points { get { return points; } set { points = value; } }
     string username;
     public string Username { get { return username; } set { username = value; DisplayUsername(); } }
     int classNumber;
@@ -32,14 +32,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-      
-        DisplayPoints(); 
+
     }
 
-    void DisplayPoints()
-    {
-        txtPoints.text = "POINTS: " + Points.ToString();
-    }
+
     void DisplayUsername()
     {
         txtUsername.text = Username;
@@ -48,8 +44,7 @@ public class GameManager : MonoBehaviour
     public void AddPoints(int point)
     {
         Points += point;
-        print(Points);
-        DisplayPoints();
+
         if (isLoggedIn)
         {
             UpdatePoints();

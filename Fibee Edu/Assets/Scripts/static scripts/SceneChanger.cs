@@ -4,26 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-public enum Scenes
-{
-    MainMenu,
-    Game,
-    Clock,
-    MultiplicationTable,
-    Dividing,
-    MathTextTask,
-    webPlay
-}
-
-public enum Tasks
-{
-    NoTask,
-    Clock,
-    MultiplicationTable,
-    MathTextTask
-}
-
 public enum Language
 {
     English,
@@ -43,23 +23,22 @@ public class SceneChanger : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        //DontDestroyOnLoad(gameObject);
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            LoadScene((int)Scenes.Game);
-        }
-    }
     public void LoadScene(int _sceneIndex)
     {
         SceneManager.LoadScene(_sceneIndex);
     }
 
-    public void LoadWWW()
+    public void GoBack()
     {
-        LoadScene((int)Scenes.webPlay);
+        if(SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            LoadScene(0);
+        }
+        else
+        {
+            LoadScene(1);
+        }
     }
 }

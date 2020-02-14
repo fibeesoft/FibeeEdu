@@ -12,42 +12,12 @@ public class MenuManager : MonoBehaviour
     [SerializeField] InputField inpLoginUsername, inpLoginPassword;
     [SerializeField] InputField inpRegUsername, inpRegPassword, inpRegEmail;
     [SerializeField] Slider sliderClass;
-    [SerializeField] TextMeshProUGUI txtClass;
-    string username;
-    int classRoomSelected;
 
-    
-    void Start()
-	{
-        LoginPanel.SetActive(false);
-        btnStartGame.onClick.AddListener(delegate { SceneChanger.instance.LoadScene((int)Scenes.Game); });
-        if(GameManager.instance.ClassNumber != 0)
-        {
-            classRoomSelected = GameManager.instance.ClassNumber;
-            sliderClass.value = classRoomSelected;
-            txtClass.text = "CLASS [" + classRoomSelected + "]";
-        }
-        else
-        {
-            classRoomSelected = 0;
-            txtClass.text = "PICK THE CLASS";
-        }
-	}
 
     public void SetClassRoom()
     {
-        classRoomSelected = (int)sliderClass.value;
-        if(classRoomSelected == 0)
-        {
-            txtClass.text = "PICK THE CLASS";
-        }
-        else
-        {
-            txtClass.text = "CLASS [" + classRoomSelected + "]";
-            GameManager.instance.ClassNumber = classRoomSelected;
-        }
-        MainUI.instance.SetClassNumberText(classRoomSelected);
-
+        GameManager.instance.ClassNumber = (int)sliderClass.value;
+        MainUI.instance.SetClassNumberTextInButton((int)sliderClass.value);
     }
     public void OpenLoginPanel(bool b)
     {
@@ -77,10 +47,9 @@ public class MenuManager : MonoBehaviour
 
     IEnumerator LoginCor()
     {
-        username = inpLoginUsername.text;
         string url = "www.pikademia.pl/apps/login.php";
         WWWForm form = new WWWForm();
-        form.AddField("username", username);
+        form.AddField("username", inpLoginUsername.text);
         form.AddField("password", inpLoginPassword.text);
         using (UnityWebRequest www = UnityWebRequest.Post(url, form))
         {
@@ -96,7 +65,6 @@ public class MenuManager : MonoBehaviour
                     GameManager.instance.IsLoggedIn = true;
                     print(www.downloadHandler.text);
                     OpenLoginPanel(false);
-                    MainUI.instance.ActivateUserButton(true);
 
                     string[] userInfo = www.downloadHandler.text.Split('|');
 
@@ -111,7 +79,6 @@ public class MenuManager : MonoBehaviour
                 else
                 {
                     GameManager.instance.IsLoggedIn = false;
-                    MainUI.instance.ActivateUserButton(false);
                     print(www.downloadHandler.text);
                     ResetInputFields();
                 }
@@ -163,5 +130,8 @@ public class MenuManager : MonoBehaviour
         Application.Quit();
         print("quit");
     }
-
+    public void StartTheGame()
+    {
+        SceneChanger.instance.LoadScene(1);
+    }
 }

@@ -38,7 +38,7 @@ public class Dividing : MonoBehaviour
     public void CreateTask()
     {
         GenerateRandomNumbers();
-        MainUI.instance.SetSolution(Solution());
+        MainUI.instance.SetInfo(Solution());
     }
     void GenerateRandomNumbers()
     {

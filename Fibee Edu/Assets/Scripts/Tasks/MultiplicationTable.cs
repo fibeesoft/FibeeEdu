@@ -32,7 +32,7 @@ public class MultiplicationTable : MonoBehaviour
         txtExpression.text = $"{num1} x {num2} = ";
         inpAnswer.ActivateInputField();
         inpAnswer.text = "";
-        MainUI.instance.SetSolution(Solution());
+        MainUI.instance.SetInfo(Solution());
     }
 
     public void CheckAnswer()

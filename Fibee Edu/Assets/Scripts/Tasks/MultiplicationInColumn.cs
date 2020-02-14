@@ -36,7 +36,7 @@ public class MultiplicationInColumn : MonoBehaviour
     {
         GenerateRandomNumbers();
         UpdateTextFields();
-        MainUI.instance.SetSolution(Solution());
+        MainUI.instance.SetInfo(Solution());
     }
 
     public string Solution()

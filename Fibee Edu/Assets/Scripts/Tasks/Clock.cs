@@ -17,12 +17,13 @@ public class Clock : MonoBehaviour
     int generatedHour, generatedMinute;
     void Start()
     {
+        /*
         MainUI.instance.SetExplanation("This task comes in two options to choose from. We can either read the analog clock, use sliders to set the value on the digital clock or we can read the values and try to set the analog clock by sliding the sliders." +
             "\n We can choose READ, SET or RANDOM option. Once we set the analog or digital clock we can press the Check Button. If the answer is correct, new task will be generated automatically." +
             "\n\nThere is an option to switch between 12H and 24H system. The sun/moon icon appears to indicate the time of the day." +
             "\nThe day is 6.00 - 17:59 while the night starts at 18.00 - 5:59" +
             "\n");
-        ;
+            */
         CreateTask();
     }
 
@@ -224,7 +225,7 @@ public class Clock : MonoBehaviour
         CalculateRandomTime();
         SetTheAnalogClock();
         SetTheDigitalClock();
-        MainUI.instance.SetSolution(generatedHour + " : " + generatedMinute);
+        MainUI.instance.SetInfo(generatedHour + " : " + generatedMinute);
     }
     void DebugTime()
     {
