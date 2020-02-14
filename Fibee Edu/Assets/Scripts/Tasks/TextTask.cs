@@ -105,16 +105,28 @@ public class TextTask : MonoBehaviour
     {
         if(inpAnswer.text == answer)
         {
-            if (!isRandomOn)
-            {
-
-                lastTaskNumber++;
-                textTaskNumber = lastTaskNumber;
-            }
             inpAnswer.text = "";
             Animations.instance.AnimateCheckButton(true);
             GameManager.instance.AddPoints(2);
-            GenerateTask();
+            if (!isRandomOn)
+            {
+                if(textTaskNumber < allTasksQuantity)
+                {
+                    lastTaskNumber++;
+                    textTaskNumber = lastTaskNumber;
+                    GenerateTask();
+                }
+                else
+                {
+                    txtTextTask.text = "Pula zadań została wyczerpana. Gratulacje :)";
+                }
+            }
+            else
+            {
+                GenerateTask();
+
+            }
+
         }
         else
         {
