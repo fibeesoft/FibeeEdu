@@ -85,4 +85,9 @@ public class MainUI : MonoBehaviour
     {
         SceneChanger.instance.LoadScene(7);
     }
+
+    public void CloseApp()
+    {
+        Application.Quit();
+    }
  }

@@ -7,7 +7,6 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] Button btnClose;
     [SerializeField] GameObject LoginPanel, RegisterPanel;
     [SerializeField] InputField inpLoginUsername, inpLoginPassword;
     [SerializeField] InputField inpRegUsername, inpRegPassword, inpRegEmail;
@@ -16,7 +15,6 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         SetInitialClassSlider();
-        btnClose.gameObject.SetActive(true);
         MainUI.instance.DisplayHideBtnInfo(false);
     }
  
@@ -134,14 +132,8 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void QuitTheGame()
-    {
-        Application.Quit();
-        print("quit");
-    }
     public void StartTheGame()
     {
-        btnClose.gameObject.SetActive(false);
         SceneChanger.instance.LoadScene(1);
     }
 }
