@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -574,8 +574,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 436253701}
-  - component: {fileID: 436253702}
   - component: {fileID: 436253700}
+  - component: {fileID: 436253702}
   m_Layer: 0
   m_Name: TextTask
   m_TagString: Untagged
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 436253699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a158168c3afef34a82dc89f52729e89, type: 3}
+  m_Script: {fileID: 11500000, guid: 173f84d5092ef9e4ab87093dbb77b1e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &481187537

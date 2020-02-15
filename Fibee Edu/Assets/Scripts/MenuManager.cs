@@ -7,17 +7,27 @@ using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField] Button btnStartGame;
+    [SerializeField] Button btnClose;
     [SerializeField] GameObject LoginPanel, RegisterPanel;
     [SerializeField] InputField inpLoginUsername, inpLoginPassword;
     [SerializeField] InputField inpRegUsername, inpRegPassword, inpRegEmail;
     [SerializeField] Slider sliderClass;
 
-
+    private void Start()
+    {
+        SetInitialClassSlider();
+        btnClose.gameObject.SetActive(true);
+        MainUI.instance.DisplayHideBtnInfo(false);
+    }
+ 
     public void SetClassRoom()
     {
         GameManager.instance.ClassNumber = (int)sliderClass.value;
-        MainUI.instance.SetClassNumberTextInButton((int)sliderClass.value);
+        MainUI.instance.DisplayClassNumberTextInButton(GameManager.instance.ClassNumber);
+    }
+    void SetInitialClassSlider()
+    {
+        sliderClass.value = GameManager.instance.ClassNumber;
     }
     public void OpenLoginPanel(bool b)
     {
@@ -86,7 +96,6 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-
     public void Register()
     {
         StartCoroutine(RegisterCor());
@@ -122,9 +131,6 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    
-
-
     public void QuitTheGame()
     {
         Application.Quit();
@@ -132,6 +138,7 @@ public class MenuManager : MonoBehaviour
     }
     public void StartTheGame()
     {
+        btnClose.gameObject.SetActive(false);
         SceneChanger.instance.LoadScene(1);
     }
 }

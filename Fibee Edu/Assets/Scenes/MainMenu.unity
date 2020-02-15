@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f024079854b013c489b724979cb1cc9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  btnStartGame: {fileID: 1300416924}
+  btnClose: {fileID: 1145601580}
   LoginPanel: {fileID: 3317491107783749059}
   RegisterPanel: {fileID: 3317491106248267939}
   inpLoginUsername: {fileID: 3317491108012574875}
@@ -1421,6 +1421,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112486078}
   m_CullTransparentMesh: 0
+--- !u!114 &1145601580 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2575377671081764715, guid: 06d5c2fe1edaf6a47b380749d2b5583e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1843724664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1158024360
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,12 +2381,12 @@ PrefabInstance:
     - target: {fileID: 2575377671081764724, guid: 06d5c2fe1edaf6a47b380749d2b5583e,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -830
+      value: -70
       objectReference: {fileID: 0}
     - target: {fileID: 2575377671081764724, guid: 06d5c2fe1edaf6a47b380749d2b5583e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -102
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 2575377671081764724, guid: 06d5c2fe1edaf6a47b380749d2b5583e,
         type: 3}
@@ -2424,7 +2436,7 @@ PrefabInstance:
     - target: {fileID: 2575377671081764725, guid: 06d5c2fe1edaf6a47b380749d2b5583e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06d5c2fe1edaf6a47b380749d2b5583e, type: 3}

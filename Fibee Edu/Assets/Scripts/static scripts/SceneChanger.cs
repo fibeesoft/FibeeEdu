@@ -29,7 +29,6 @@ public class SceneChanger : MonoBehaviour
     {
         SceneManager.LoadScene(_sceneIndex);
     }
-
     public void GoBack()
     {
         if(SceneManager.GetActiveScene().buildIndex == 1)

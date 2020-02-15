@@ -12,7 +12,7 @@ public class MainUI : MonoBehaviour
     [SerializeField] GameObject infoPanel;
     [SerializeField] Text txtInfo;
     [SerializeField] RawImage imgInfo;
-
+    string info, imageUrl;
     private void Awake()
     {
         if (instance == null)
@@ -25,12 +25,27 @@ public class MainUI : MonoBehaviour
         }
     }
 
-    public void SetInfo(string txt)
+    public void DisplayHideBtnInfo(bool b)
     {
-        txtInfo.text = txt;
+        btnInfo.gameObject.SetActive(b);
     }
 
-    public void SetClassNumberTextInButton(int classNr)
+    public void DisplayPoints()
+    {
+        btnPoints.GetComponentInChildren<TextMeshProUGUI>().text = GameManager.instance.Points.ToString();
+    }
+
+    public void SetInfo(string txt)
+    {
+        info = txt;
+    }
+
+    public void SetImageUrl(string txt)
+    {
+        imageUrl = txt;
+    }
+
+    public void DisplayClassNumberTextInButton(int classNr)
     {
         TextMeshProUGUI txtClassNumber = btnUserClass.GetComponentInChildren<TextMeshProUGUI>();
         txtClassNumber.text = classNr.ToString();
@@ -48,5 +63,18 @@ public class MainUI : MonoBehaviour
     public void ShowInfoPanel(bool b)
     {
         infoPanel.SetActive(b);
+        imgInfo.gameObject.SetActive(false);
+        txtInfo.gameObject.SetActive(false);
+        if (!System.String.IsNullOrEmpty(info))
+        {
+            txtInfo.gameObject.SetActive(true);
+            txtInfo.text = info;
+        }
+        
+        if(!System.String.IsNullOrEmpty(imageUrl))
+        {
+            imgInfo.gameObject.SetActive(true);
+            StartCoroutine(SetImage(imageUrl));
+        }
     }
  }

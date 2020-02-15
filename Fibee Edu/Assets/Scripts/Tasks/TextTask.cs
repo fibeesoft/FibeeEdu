@@ -25,7 +25,7 @@ public class TextTask : MonoBehaviour
 
     private void Start()
     {
-        MainUI.instance.SetInfo("Solve text tasks and provide clear answer in the input box. All answers should be provided as pure numbers or single word.");
+        
         int classNumber = GameManager.instance.ClassNumber;
         StartCoroutine(GetTextTasks(classNumber));
         textTaskNumber = lastTaskNumber;
@@ -71,7 +71,7 @@ public class TextTask : MonoBehaviour
             solution = task[3];
             imageUrl = task[4];
             string imageSolutionUrl = task[5];
-            if(imageUrl.Length > 1)
+            if(!System.String.IsNullOrEmpty(imageUrl))
             {
                 imgTask.gameObject.SetActive(true);
                 StartCoroutine(SetImage(imageUrl));
@@ -81,8 +81,10 @@ public class TextTask : MonoBehaviour
                 imgTask.gameObject.SetActive(false);
             }
             MainUI.instance.SetInfo(solution);
-            print(answer);
-
+            if (!System.String.IsNullOrEmpty(imageSolutionUrl))
+            {
+                MainUI.instance.SetImage(imageSolutionUrl);
+            }
         }
         else
         {

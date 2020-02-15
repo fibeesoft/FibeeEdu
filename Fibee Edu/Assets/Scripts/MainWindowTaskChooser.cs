@@ -9,14 +9,13 @@ public class MainWindowTaskChooser : MonoBehaviour
     public Button[] taskChooseButtons;
     void Start()
     {
+        MainUI.instance.DisplayHideBtnInfo(false);
         for(int i = 0; i < taskChooseButtons.Length; i++)
         {
             int x = i;
             taskChooseButtons[i].onClick.AddListener(delegate { LoadTaskScene(x + 2); });
-            //print("task choosen: " + i);
         }
     }
-
 
     void LoadTaskScene(int i)
     {

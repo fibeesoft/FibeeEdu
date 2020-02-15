@@ -7,13 +7,12 @@ using UnityEngine.Networking;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    [SerializeField] TextMeshProUGUI txtPoints, txtUsername;
     bool isLoggedIn = false;
     public bool IsLoggedIn { get { return isLoggedIn; } set { isLoggedIn = value; } }
     int points;
     public int Points { get { return points; } set { points = value; } }
     string username;
-    public string Username { get { return username; } set { username = value; DisplayUsername(); } }
+    public string Username { get { return username; } set { username = value; } }
     int classNumber;
     public int ClassNumber { get { return classNumber; } set { classNumber = value; } }
 
@@ -30,30 +29,17 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
-    {
-
-    }
-
-
-    void DisplayUsername()
-    {
-        txtUsername.text = Username;
-    }
-
     public void AddPoints(int point)
     {
         Points += point;
-
+        MainUI.instance.DisplayPoints();
         if (isLoggedIn)
         {
-            UpdatePoints();
+            StartCoroutine(UpdatePointsCor());
         }
     }
-    public void UpdatePoints()
-    {
-        StartCoroutine(UpdatePointsCor());
-    }
+
+    
 
     IEnumerator UpdatePointsCor()
     {
@@ -74,7 +60,4 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-
-
-
 }
