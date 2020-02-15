@@ -23,7 +23,7 @@ public class MenuManager : MonoBehaviour
     public void SetClassRoom()
     {
         GameManager.instance.ClassNumber = (int)sliderClass.value;
-        MainUI.instance.DisplayClassNumberTextInButton(GameManager.instance.ClassNumber);
+        MainUI.instance.DisplayUserAndClass();
     }
     void SetInitialClassSlider()
     {
@@ -84,7 +84,10 @@ public class MenuManager : MonoBehaviour
                     }
                     int points = System.Convert.ToInt32(userInfo[1]);
                     GameManager.instance.Points = points;
+                    MainUI.instance.DisplayPoints();
                     GameManager.instance.Username = userInfo[0];
+                    MainUI.instance.DisplayUserAndClass();
+                    MainUI.instance.ActivateBtnUser();
                 }
                 else
                 {

@@ -2386,7 +2386,7 @@ PrefabInstance:
     - target: {fileID: 2575377671081764724, guid: 06d5c2fe1edaf6a47b380749d2b5583e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -100
+      value: -104
       objectReference: {fileID: 0}
     - target: {fileID: 2575377671081764724, guid: 06d5c2fe1edaf6a47b380749d2b5583e,
         type: 3}
@@ -2432,11 +2432,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ButtonClose
-      objectReference: {fileID: 0}
-    - target: {fileID: 2575377671081764725, guid: 06d5c2fe1edaf6a47b380749d2b5583e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06d5c2fe1edaf6a47b380749d2b5583e, type: 3}
@@ -3005,7 +3000,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.8999939, y: 139.5}
+  m_AnchoredPosition: {x: -0.9000244, y: 139.5}
   m_SizeDelta: {x: -39.6, y: -912.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3317491106248267939

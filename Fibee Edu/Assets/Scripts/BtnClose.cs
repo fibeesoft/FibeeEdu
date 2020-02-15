@@ -10,13 +10,12 @@ public class BtnClose : MonoBehaviour
     void Start()
     {
         btn = GetComponent<Button>();
-        anim = GetComponent<Animator>();
-        btn.onClick.AddListener(delegate { ClickButton(); });
+        //btn.onClick.AddListener(delegate { ClickButton(); });
     }
 
     void ClickButton()
     {
-        anim.SetTrigger("animate");
+
 
     }
 }

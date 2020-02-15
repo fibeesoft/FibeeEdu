@@ -29,10 +29,19 @@ public class MainUI : MonoBehaviour
     {
         btnInfo.gameObject.SetActive(b);
     }
-
+    public void ActivateBtnUser()
+    {
+        btnUserClass.interactable = true;
+    }
     public void DisplayPoints()
     {
         btnPoints.GetComponentInChildren<TextMeshProUGUI>().text = GameManager.instance.Points.ToString();
+    }
+    public void DisplayUserAndClass()
+    {
+        TextMeshProUGUI txtUserClass = btnUserClass.GetComponentInChildren<TextMeshProUGUI>();
+        txtUserClass.text = GameManager.instance.Username;
+        txtUserClass.text += " [" + GameManager.instance.ClassNumber + "]";
     }
 
     public void SetInfo(string txt)
@@ -43,12 +52,6 @@ public class MainUI : MonoBehaviour
     public void SetImageUrl(string txt)
     {
         imageUrl = txt;
-    }
-
-    public void DisplayClassNumberTextInButton(int classNr)
-    {
-        TextMeshProUGUI txtClassNumber = btnUserClass.GetComponentInChildren<TextMeshProUGUI>();
-        txtClassNumber.text = classNr.ToString();
     }
 
     public IEnumerator SetImage(string MediaUrl)
@@ -76,5 +79,10 @@ public class MainUI : MonoBehaviour
             imgInfo.gameObject.SetActive(true);
             StartCoroutine(SetImage(imageUrl));
         }
+    }
+
+    public void OpenAddTaskScene()
+    {
+        SceneChanger.instance.LoadScene(7);
     }
  }
