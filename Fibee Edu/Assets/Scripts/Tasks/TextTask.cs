@@ -63,6 +63,7 @@ public class TextTask : MonoBehaviour
     {
         if (textTaskNumber < allTasksQuantity)
         {
+
             SetRandomOption();
             ChooseNextTaskNumber();
             task = tasksArray[textTaskNumber].Split('|');
@@ -105,7 +106,7 @@ public class TextTask : MonoBehaviour
 
     public void Check()
     {
-        if(inpAnswer.text == answer)
+        if(inpAnswer.text.Trim().ToLower().Replace(" ", "").Replace(".",",") == answer)
         {
             inpAnswer.text = "";
             Animations.instance.AnimateCheckButton(true);
