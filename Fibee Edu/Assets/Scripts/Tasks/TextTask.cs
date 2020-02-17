@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class TextTask : MonoBehaviour
 {
+
     //get all SQL records as json file based on class picked on Start()
     //create array out of json objects on Start()
     //
@@ -14,7 +15,7 @@ public class TextTask : MonoBehaviour
     [SerializeField] Slider sliderRandOption;
     [SerializeField] RawImage imgTask;
     int textTaskNumber = 0, lastTaskNumber = 0;
-    int allTasksQuantity;
+    int allTasksQuantity, taskid;
     string [] tasksArray;
     string[] task;
     string answer;
@@ -58,6 +59,40 @@ public class TextTask : MonoBehaviour
             }
         }
     }
+    public void GetTexture(string url)
+    {
+        
+        StartCoroutine(GetTextureCoroutine(url));
+    }
+
+    private IEnumerator GetTextureCoroutine(string url)
+    {
+        using (UnityWebRequest unityWebRequest = UnityWebRequestTexture.GetTexture(url))
+        {
+            yield return unityWebRequest.SendWebRequest();
+
+            if (unityWebRequest.isNetworkError || unityWebRequest.isHttpError)
+            {
+                print(unityWebRequest.error);
+            }
+            else
+            {
+                DownloadHandlerTexture downloadHandlerTexture = unityWebRequest.downloadHandler as DownloadHandlerTexture;
+
+                imgTask.texture = downloadHandlerTexture.texture;
+            }
+        }
+    }
+    IEnumerator SetImage(string MediaUrl)
+    {
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(MediaUrl);
+        yield return request.SendWebRequest();
+        if (request.isNetworkError || request.isHttpError)
+            Debug.Log(request.error);
+        else
+            imgTask.texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
+    }
+
 
     public void GenerateTask()
     {
@@ -67,15 +102,16 @@ public class TextTask : MonoBehaviour
             SetRandomOption();
             ChooseNextTaskNumber();
             task = tasksArray[textTaskNumber].Split('|');
-            txtTextTask.text = task[0];
-            answer = task[1];
-            solution = task[3];
-            imageUrl = task[4];
-            string imageSolutionUrl = task[5];
+            taskid = System.Convert.ToInt32(task[0]);
+            txtTextTask.text = taskid + "\n" + task[1];
+            answer = task[2];
+            solution = task[4];
+            imageUrl = task[5];
+            string imageSolutionUrl = task[6];
             if(!System.String.IsNullOrEmpty(imageUrl))
             {
                 imgTask.gameObject.SetActive(true);
-                StartCoroutine(SetImage(imageUrl));
+                StartCoroutine(GetTextureCoroutine(imageUrl));
             }
             else
             {
@@ -94,15 +130,7 @@ public class TextTask : MonoBehaviour
 
     }
 
-    IEnumerator SetImage(string MediaUrl)
-    {
-        UnityWebRequest request = UnityWebRequestTexture.GetTexture(MediaUrl);
-        yield return request.SendWebRequest();
-        if (request.isNetworkError || request.isHttpError)
-            Debug.Log(request.error);
-        else
-            imgTask.texture = ((DownloadHandlerTexture)request.downloadHandler).texture;
-    }
+
 
     public void Check()
     {
@@ -115,9 +143,7 @@ public class TextTask : MonoBehaviour
             {
                 if(textTaskNumber < allTasksQuantity)
                 {
-                    lastTaskNumber++;
-                    textTaskNumber = lastTaskNumber;
-                    GenerateTask();
+                    NextTask();
                 }
                 else
                 {
@@ -136,6 +162,19 @@ public class TextTask : MonoBehaviour
             Animations.instance.AnimateCheckButton(false);
             inpAnswer.text = "";
         }
+    }
+
+    public void NextTask()
+    {
+        lastTaskNumber++;
+        textTaskNumber = lastTaskNumber;
+        GenerateTask();
+    }   
+    public void PrevTask()
+    {
+        lastTaskNumber--;
+        textTaskNumber = lastTaskNumber;
+        GenerateTask();
     }
 
     public void SetRandomOption()
